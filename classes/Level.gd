@@ -1,6 +1,7 @@
 extends Node3D
 class_name Level
-## TODO: Delete the pause functions in utility and write them here
+##Now with Qodot, it can be used to create custom entities in the map
+
 @export var pause_menu: CanvasLayer
 
 static var is_paused: bool = false
@@ -25,9 +26,11 @@ func _input(event):
 
 func _on_game_paused():
 	pause_menu.show()
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 func _on_game_resumed():
 	pause_menu.hide()
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 static func pause() -> void:
 	is_paused = true

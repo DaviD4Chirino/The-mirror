@@ -1,11 +1,10 @@
+res://resources
+res://scenes
+C:/trenchbroom/games
 res://
-res://scenes/ui/user inputs
 res://scenes/screens/config
 res://classes/custom
 res://scenes/screens
 res://autoloads/managers
 res://autoloads
-res://resources
-res://shaders
 res://scenes/examples/save system
-res://scenes

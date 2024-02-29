@@ -1,0 +1,50 @@
+[gd_scene load_steps=9 format=3 uid="uid://ddqxijk1lfhxc"]
+
+[ext_resource type="Script" path="res://classes/Player.gd" id="1_dl41v"]
+[ext_resource type="Texture2D" uid="uid://bw3ud1m3hvqot" path="res://textures/logo_blue_512x512.png" id="2_jw1id"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3D.gd" id="3_sgu6p"]
+[ext_resource type="Script" path="res://scenes/player_head.gd" id="3_yhurf"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="4_42teu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xbpib"]
+albedo_texture = ExtResource("2_jw1id")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_cbgyd"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_su0fi"]
+
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("head")]
+script = ExtResource("1_dl41v")
+head = NodePath("head")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_xbpib")
+mesh = SubResource("CapsuleMesh_cbgyd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_su0fi")
+
+[node name="head" type="Node3D" parent="." node_paths=PackedStringArray("camera")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.5)
+script = ExtResource("3_yhurf")
+camera = NodePath("PhantomCamera3D")
+
+[node name="PhantomCamera3D" type="Node3D" parent="head"]
+transform = Transform3D(1, 0, -5.96046e-08, 0, 1.00008, 0, 5.36442e-07, 0, 1.00008, 0, -0.5, 0.5)
+script = ExtResource("3_sgu6p")
+priority_override = false
+priority = 0
+follow_mode = 1
+follow_target = NodePath("../..")
+follow_parameters/damping = false
+look_at_mode = 0
+tween_parameters = null
+tween_on_load = true
+inactive_update_mode = 0
+camera_3D_resource = null
+
+[node name="Camera3D" type="Camera3D" parent="head"]
+transform = Transform3D(1, 0, -5.96046e-08, 0, 1.00008, 0, 5.36442e-07, 0, 1.00008, 0, -0.5, 0.5)
+
+[node name="PhantomCameraHost" type="Node" parent="head/Camera3D"]
+script = ExtResource("4_42teu")
