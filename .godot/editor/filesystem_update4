@@ -1,0 +1,15 @@
+res://classes/Level.gd
+res://autoloads/Utility.gd
+res://autoloads/global.gd
+res://scenes/Level.tscn
+res://resources/InputActionDictionary.tres
+res://scenes/screens/main_menu.tscn
+res://scenes/screens/pause_menu.gd
+res://scenes/screens/pause_menu.tscn
+res://scenes/screens/main_menu.gd
+res://addons/gd-blender-3d-shortcuts/plugin.gd
+res://scenes/screens/config/InputButton.gd
+res://addons/scene_manager/SceneManager.gd
+res://classes/Plager.gd
+res://classes/LoadingScreen.gd
+res://classes/Player.gd
