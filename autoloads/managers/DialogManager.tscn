@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://mklmgwirqgs8"]
 
 [ext_resource type="Script" path="res://autoloads/managers/DialogManager.gd" id="1_t03am"]
-[ext_resource type="Texture2D" uid="uid://bmq3ltjgj52gq" path="res://icon.svg" id="2_0cj6q"]
 [ext_resource type="Script" path="res://addons/awesome_input_icons/classes/InputIconTextureRect.gd" id="2_lfy7x"]
+[ext_resource type="PackedScene" uid="uid://d3rr80644jgyv" path="res://scenes/screens/dialog_popup.tscn" id="3_qx6ui"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vb3by"]
 font_size = 32
@@ -42,7 +42,6 @@ alignment = 1
 
 [node name="InputIcon" type="TextureRect" parent="Control/MarginContainer/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("2_0cj6q")
 expand_mode = 2
 script = ExtResource("2_lfy7x")
 
@@ -52,3 +51,5 @@ text = "
 "
 label_settings = SubResource("LabelSettings_vb3by")
 vertical_alignment = 1
+
+[node name="DialogPopup" parent="." instance=ExtResource("3_qx6ui")]

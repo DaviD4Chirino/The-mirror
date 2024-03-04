@@ -1,2 +1,9 @@
-res://autoloads/managers/DialogManager.gd
-res://classes/Level.gd
+res://scenes/screens/dialog_popup.gd
+res://scenes/screens/dialog_popup.tscn
+res://resources/InputActionDictionary.tres
+res://addons/qodot/game_definitions/fgd/solid_classes/func_group_solid_class.tres
+res://addons/qodot/game_definitions/fgd/solid_classes/mover_solid_class.tres
+res://addons/qodot/game_definitions/fgd/solid_classes/trigger_solid_class.tres
+res://resources/DialogData.gd
+res://scenes/screens/pause_menu.tscn
+res://autoloads/managers/DialogManager.tscn
