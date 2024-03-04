@@ -1,11 +1,2 @@
-res://scenes/levels/Level.tscn
-res://resources/InputActionDictionary.tres
-res://scenes/player.tscn
-res://addons/gd-blender-3d-shortcuts/Utils.gd
-res://resources/new_sky.tres
-res://classes/Player.gd
-res://scenes/screens/main_menu.tscn
-res://scenes/screens/pause_menu.tscn
+res://autoloads/managers/DialogManager.gd
 res://classes/Level.gd
-res://addons/scene_manager/SceneManager.gd
-res://scenes/player_head.gd

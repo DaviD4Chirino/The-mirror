@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://mklmgwirqgs8"]
+
+[ext_resource type="Script" path="res://autoloads/managers/DialogManager.gd" id="1_t03am"]
+[ext_resource type="Texture2D" uid="uid://bmq3ltjgj52gq" path="res://icon.svg" id="2_0cj6q"]
+[ext_resource type="Script" path="res://addons/awesome_input_icons/classes/InputIconTextureRect.gd" id="2_lfy7x"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vb3by"]
+font_size = 32
+
+[node name="DialogManager" type="CanvasLayer" node_paths=PackedStringArray("message_label", "input_icon")]
+follow_viewport_enabled = true
+script = ExtResource("1_t03am")
+message_label = NodePath("Control/MarginContainer/HBoxContainer/InteractableMessage")
+input_icon = NodePath("Control/MarginContainer/HBoxContainer/InputIcon")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -169.0
+offset_bottom = -73.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="InputIcon" type="TextureRect" parent="Control/MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_0cj6q")
+expand_mode = 2
+script = ExtResource("2_lfy7x")
+
+[node name="InteractableMessage" type="Label" parent="Control/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "
+"
+label_settings = SubResource("LabelSettings_vb3by")
+vertical_alignment = 1

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dm0dtxuvrcqiu"]
+
+[ext_resource type="Script" path="res://classes/Pickup.gd" id="1_d74pc"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_omdvc"]
+
+[node name="Key" type="Area3D"]
+collision_layer = 16384
+collision_mask = 0
+script = ExtResource("1_d74pc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_omdvc")

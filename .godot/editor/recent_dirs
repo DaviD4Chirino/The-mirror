@@ -1,10 +1,19 @@
-res://resources
-res://scenes
+res://autoloads/managers
+res://scenes/levels
+C:/Users/David/Documents/GitHub/Godot/acerola-jam-0/scenes/levels
+res://trenchbroom/solid_classes
+res://trenchbroom/point_entities
+res://trenchbroom
 C:/trenchbroom/games
+res://assets/models
+res://trenchbroom/area_entities
+res://scenes/pickups
+res://resources/items
+res://scenes
+res://resources
 res://
 res://scenes/screens/config
 res://classes/custom
 res://scenes/screens
-res://autoloads/managers
 res://autoloads
 res://scenes/examples/save system

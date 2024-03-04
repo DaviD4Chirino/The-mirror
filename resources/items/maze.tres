@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://cq2v44jyv8ej2"]
+
+[ext_resource type="PackedScene" uid="uid://8bkuucqjm11w" path="res://assets/models/maze.glb" id="1_1bajr"]
+[ext_resource type="Script" path="res://resources/Item.gd" id="2_7yknk"]
+
+[resource]
+script = ExtResource("2_7yknk")
+name = "Maze"
+model = ExtResource("1_1bajr")

@@ -1,6 +1,5 @@
 extends Node3D
 class_name Level
-##Now with Qodot, it can be used to create custom entities in the map
 
 @export var pause_menu: CanvasLayer
 

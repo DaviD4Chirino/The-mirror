@@ -1,10 +1,10 @@
 extends CharacterBody3D
 
-@export var properties: Dictionary :
+@export var properties: Dictionary:
 	get:
-		return properties # TODOConverter40 Non existent get function 
+		return properties # TODOConverter40 Non existent get function
 	set(new_properties):
-		if(properties != new_properties):
+		if (properties != new_properties):
 			properties = new_properties
 			update_properties()
 
@@ -28,19 +28,40 @@ func update_properties() -> void:
 
 	if 'speed' in properties:
 		speed = properties.speed
+	if "offset" in properties:
+			translate( - properties.offset)
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	transform = transform.interpolate_with(target_transform, speed * delta)
 
 func _ready() -> void:
+	if "offset" in properties:
+		for child in get_children():
+			child.translate(properties.offset)
+
 	base_transform = transform
 	target_transform = base_transform
+	# for child in get_children():
+	# 	child.position += properties.offset
+	# 	continue
 
 func use() -> void:
 	play_motion()
 
 func play_motion() -> void:
 	target_transform = base_transform * offset_transform
-
+	disable_collisions()
+	
 func reverse_motion() -> void:
 	target_transform = base_transform
+	enable_collisions()
+
+func disable_collisions() -> void:
+	for child in get_children():
+		if child is CollisionShape3D:
+			child.disabled = true
+
+func enable_collisions() -> void:
+	for child in get_children():
+		if child is CollisionShape3D:
+			child.disabled = false

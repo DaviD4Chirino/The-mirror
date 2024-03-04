@@ -1,0 +1,14 @@
+[remap]
+
+importer="qodot.map"
+type="Resource"
+uid="uid://i5ow240m22wt"
+path="res://.godot/imported/unnamed.6.map-a07b850fc4789d5a70ff79ad7afeb959.tres"
+
+[deps]
+
+source_file="res://scenes/levels/autosave/unnamed.6.map"
+dest_files=["res://.godot/imported/unnamed.6.map-a07b850fc4789d5a70ff79ad7afeb959.tres"]
+
+[params]
+

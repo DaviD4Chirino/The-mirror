@@ -1,0 +1,14 @@
+[remap]
+
+importer="qodot.map"
+type="Resource"
+uid="uid://c74uqtokphphv"
+path="res://.godot/imported/house.6.map-08472a43f4605cc8b4f9301275aae32e.tres"
+
+[deps]
+
+source_file="res://scenes/levels/autosave/house.6.map"
+dest_files=["res://.godot/imported/house.6.map-08472a43f4605cc8b4f9301275aae32e.tres"]
+
+[params]
+

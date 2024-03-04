@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_gjc4m")
+apply_rotation_on_map_build = true
 classname = "demo_model"
 description = "A demonstration of importing a model into trenchbroom from Godot."
 qodot_internal = false

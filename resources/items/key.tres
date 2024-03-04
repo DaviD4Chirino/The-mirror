@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://dl2p2nwmvh5hy"]
+
+[ext_resource type="PackedScene" uid="uid://bqdekidplkopb" path="res://assets/models/key.glb" id="1_infj8"]
+[ext_resource type="Script" path="res://resources/Item.gd" id="2_vts8a"]
+
+[resource]
+script = ExtResource("2_vts8a")
+name = "key"
+model = ExtResource("1_infj8")
