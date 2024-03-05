@@ -33,9 +33,10 @@ func handle_body_entered(body: Node):
 			emit_signal("trigger")
 
 		if "message" in properties:
-			DialogManager.send_message({
-				message=properties.message,
-				duration=2.0,
-				unique=true,
-				action_name=&"ACTION_INTERACT"
-			}, self)
+			DialogManager.send_message(
+				self,
+				properties.message,
+				"",
+				1.5,
+				true
+			)

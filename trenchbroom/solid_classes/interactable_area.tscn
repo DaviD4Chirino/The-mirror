@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqkovlfbu4c67"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lph46"]
+
+[node name="InteractableArea" type="Area3D"]
+collision_layer = 16384
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_lph46")

@@ -13,12 +13,10 @@ var current_character: String
 var current_dialog_index: int = -1
 
 signal dialog_finished
-
 func _ready():
 	self.hide()
 	input_icon_rect.hide()
-	await show_dialog()
-
+	
 func _input(event):
 	if event.is_action_released("ACTION_INTERACT") and not anim.is_playing():
 		update_text()

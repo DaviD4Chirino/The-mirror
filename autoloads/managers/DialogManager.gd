@@ -34,29 +34,27 @@ func _physics_process(delta):
 		message_finished.emit()
 
 func send_message(
-	## See send_message_properties for params
-	properties: Dictionary=send_message_properties,
 	## You MUST call yourself if you have unique in the properties
-	node: Node=self
+	node: Node=self,
+	## See send_message_properties for params
+	message="",
+	action_name=&"",
+	duration=3.0,
+	unique=true,
 	) -> void:
-	print_debug("displaying")
-	if "unique":
+	if unique:
 		if was_a_messenger(node):
 			return
 		messengers.append(node)
-	if "action_name" in properties:
-		input_icon.action_name = properties.action_name
+	input_icon.action_name = action_name
 	
-	if "message" in properties:
-		current_message = properties.message
-	if "duration" in properties:
-		current_duration += properties.duration
+	current_message = message
+	current_duration = duration
 
 	message_label.text = current_message
 	displaying_message = true
 
 func _clear_messages():
-	print_debug("stopping")
 	message_label.text = ""
 	input_icon.action_name = ""
 

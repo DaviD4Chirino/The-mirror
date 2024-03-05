@@ -1,3 +1,5 @@
+CollisionShape3D
+Area3D
 Timer
 HBoxContainer
 InputIconTextureRect
@@ -11,5 +13,3 @@ Control
 CanvasLayer
 QodotMap
 Level
-Node3D
-Pickup
