@@ -2,6 +2,7 @@ extends CanvasLayer
 
 @export var message_label: Label
 @export var input_icon: InputIconTextureRect
+@export var dialog_popup: Control
 
 var displaying_message: bool = false
 var current_message: String
@@ -16,9 +17,10 @@ var send_message_properties = {
 
 ## A list of all the nodes that called 
 var messengers: Array[Node] = []
-
+var dialog_messengers: Array[Node] = []
 signal message_displayed
 signal message_finished
+
 func _ready():
 	message_finished.connect(_clear_messages)
 			  
@@ -27,7 +29,6 @@ func _physics_process(delta):
 		return
 
 	current_duration -= delta
-	print_debug("left ", current_duration)
 
 	if current_duration <= 0:
 		displaying_message = false
@@ -43,7 +44,7 @@ func send_message(
 	unique=true,
 	) -> void:
 	if unique:
-		if was_a_messenger(node):
+		if _was_a_messenger(node):
 			return
 		messengers.append(node)
 	input_icon.action_name = action_name
@@ -54,11 +55,25 @@ func send_message(
 	message_label.text = current_message
 	displaying_message = true
 
+func initialize_dialog(tree: DialogTreeData, node: Node, unique=false):
+	if unique:
+		if node in dialog_messengers:
+			return
+		dialog_messengers.append(node)
+
+	dialog_popup.dialog_tree = null
+	dialog_popup.dialog_tree = tree
+	Player.can_move = false
+	dialog_popup.show_dialog()
+
+	await dialog_popup.dialog_finished
+	Player.can_move = true
+
 func _clear_messages():
 	message_label.text = ""
 	input_icon.action_name = ""
 
-func was_a_messenger(node_to_compare: Node) -> bool:
+func _was_a_messenger(node_to_compare: Node) -> bool:
 	for node in messengers:
 		if node == node_to_compare:
 			return true

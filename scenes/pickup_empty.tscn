@@ -3,19 +3,19 @@
 [ext_resource type="Script" path="res://classes/Pickup.gd" id="1_xp6y6"]
 [ext_resource type="PackedScene" uid="uid://cqkovlfbu4c67" path="res://trenchbroom/solid_classes/interactable_area.tscn" id="2_a7kcj"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_18uve"]
-size = Vector3(0.1, 0.1, 0.1)
+[sub_resource type="BoxShape3D" id="BoxShape3D_vfuwr"]
+size = Vector3(0.2, 0.2, 0.2)
 
 [node name="PickupEmpty" type="RigidBody3D" node_paths=PackedStringArray("holder")]
 collision_layer = 16384
 script = ExtResource("1_xp6y6")
 holder = NodePath("holder")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00480652, 0.0493302, 0)
-shape = SubResource("BoxShape3D_18uve")
-
 [node name="holder" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0570192, 0)
 
 [node name="InteractableArea" parent="." instance=ExtResource("2_a7kcj")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.109636, 0)
+shape = SubResource("BoxShape3D_vfuwr")

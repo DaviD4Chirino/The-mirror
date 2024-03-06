@@ -16,15 +16,6 @@ var model: Node = null: get = get_model
 		if item and item.model:
 			holder.add_child(item.model.instantiate())
 
-func display_pickup_message():
-	DialogManager.send_message(
-			self,
-			"to pick up",
-			"ACTION_INTERACT",
-			0.05,
-			false
-		)
-
 func _ready():
 	if not holder:
 		return
@@ -32,6 +23,23 @@ func _ready():
 	clear_models()
 	if item and item.model:
 		holder.add_child(item.model.instantiate())
+	
+func display_pickup_message():
+	DialogManager.send_message(
+			self,
+			"to pick up",
+			"ACTION_INTERACT",
+			0.01,
+			false
+		)
+## This will be fired each physics frame
+func interact():
+	display_pickup_message()
+	if Input.is_action_just_released("ACTION_INTERACT"):
+		Player.item = item
+		g.player.add_pickup_to_hand(Player.item)
+		queue_free()
+	pass
 
 func clear_models():
 	for child in holder.get_children():

@@ -29,6 +29,14 @@ func handle_body_entered(body: Node):
 				emit_signal("trigger")
 				if consume_item:
 					g.player.clear_pickups()
+			else:
+				DialogManager.send_message(
+					self,
+					str("you need a [%s]" % [item_name]),
+					"",
+					1.5,
+					false
+				)
 		else:
 			emit_signal("trigger")
 

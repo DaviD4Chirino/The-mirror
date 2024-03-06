@@ -1,4 +1,6 @@
 CollisionShape3D
+RigidBody3D
+PhantomCamera3D
 Area3D
 Timer
 HBoxContainer
@@ -10,6 +12,3 @@ Label
 TextureRect
 ColorRect
 Control
-CanvasLayer
-QodotMap
-Level

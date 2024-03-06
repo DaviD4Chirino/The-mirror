@@ -6,6 +6,8 @@ extends Node3D
 @export var camera: PhantomCamera3D
 
 func _input(event):
+	if not Player.can_move:
+		return
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		player.rotate_y( - event.relative.x * mouse_sensitivity)
 		rotate_x( - event.relative.y * mouse_sensitivity)

@@ -5,8 +5,10 @@ class_name Player
 @export_category("Nodes")
 @export var hand: Marker3D
 @export var eyes: RayCast3D
-
+@export var feet: Node3D
 static var item: Item
+
+static var can_move: bool = true
 
 func _ready() -> void:
 	g.player = self
@@ -28,12 +30,8 @@ func handle_pickup() -> void:
 	var collider: Node = eyes.get_collider()
 
 	if collider:
-		collider.owner.display_pickup_message()
-		
-		if Input.is_action_just_released("ACTION_INTERACT"):
-			var pickup_item = collider.owner.item
-			add_pickup_to_hand(pickup_item)
-			collider.owner.queue_free()
+		if collider.owner.has_method("interact"):
+			collider.owner.interact()
 
 ## It takes care of making sure that the previous grabbed object
 ## is cleared before adding another

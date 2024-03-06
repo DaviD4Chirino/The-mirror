@@ -12,10 +12,11 @@ extends Control
 var current_character: String
 var current_dialog_index: int = -1
 
+var continue_button_visible: bool = false
+
 signal dialog_finished
 func _ready():
 	self.hide()
-	input_icon_rect.hide()
 	
 func _input(event):
 	if event.is_action_released("ACTION_INTERACT") and not anim.is_playing():
@@ -24,6 +25,7 @@ func _input(event):
 func show_dialog():
 	self.show()
 	input_icon_rect.hide()
+	current_dialog_index = -1
 	update_text()
 	anim.play("show_dialog")
 	await anim.animation_finished
@@ -51,9 +53,11 @@ func update_text():
 		finish_dialog()
 		return
 
-	if input_icon_rect.modulate.a >= 0.8:
+	if continue_button_visible:
 		hide_continue_button()
+
 	continue_timer.start()
+	continue_button_visible = false
 
 	var current_dialog: DialogData = dialog_tree.tree[current_dialog_index]
 
@@ -71,4 +75,5 @@ func finish_dialog():
 	await hide_dialog()
 
 func _on_continue_timer_timeout():
+	continue_button_visible = true
 	show_continue_button()

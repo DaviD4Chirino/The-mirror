@@ -11,7 +11,7 @@ static func get_icon(action: StringName, event_index: int=0) -> Texture2D:
 	var events: Array[InputEvent] = InputMap.action_get_events(action)
 
 	if not events:
-		printerr("Input Icon: No events found for action: " + action)
+		push_warning("Input Icon: No events found for action: " + action)
 		return null
 
 	if event_index > events.size():

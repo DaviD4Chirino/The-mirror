@@ -10,8 +10,11 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _physics_process(delta):
 	player.velocity.y += - gravity * delta
+	if not player.can_move:
+		player.velocity = Vector3.ZERO
+		return
 	movement(delta)
-
+	
 func movement(delta: float):
 	var input_dir: Vector2 = Input.get_vector("MOVE_LEFT", "MOVE_RIGHT", "MOVE_FORWARD", "MOVE_BACKWARD")
 	var movement_dir: Vector3 = player.transform.basis * Vector3(input_dir.x, 0, input_dir.y)

@@ -7,11 +7,12 @@
 [sub_resource type="LabelSettings" id="LabelSettings_vb3by"]
 font_size = 32
 
-[node name="DialogManager" type="CanvasLayer" node_paths=PackedStringArray("message_label", "input_icon")]
+[node name="DialogManager" type="CanvasLayer" node_paths=PackedStringArray("message_label", "input_icon", "dialog_popup")]
 follow_viewport_enabled = true
 script = ExtResource("1_t03am")
 message_label = NodePath("Control/MarginContainer/HBoxContainer/InteractableMessage")
 input_icon = NodePath("Control/MarginContainer/HBoxContainer/InputIcon")
+dialog_popup = NodePath("DialogPopup")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3

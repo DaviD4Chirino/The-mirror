@@ -57,6 +57,8 @@ func reverse_motion() -> void:
 	enable_collisions()
 
 func disable_collisions() -> void:
+	if "keep_collisions" in properties:
+		return
 	for child in get_children():
 		if child is CollisionShape3D:
 			child.disabled = true

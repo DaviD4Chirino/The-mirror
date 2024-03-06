@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bj1vbtnybe65h"]
+
+[ext_resource type="PackedScene" uid="uid://cys1ix6w68m2r" path="res://assets/models/mirror.glb" id="1_jaluk"]
+[ext_resource type="PackedScene" uid="uid://cqkovlfbu4c67" path="res://trenchbroom/solid_classes/interactable_area.tscn" id="2_vej5d"]
+
+[node name="CharacterMirror" type="Node3D"]
+
+[node name="mirror" parent="." instance=ExtResource("1_jaluk")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="InteractableArea" parent="." instance=ExtResource("2_vej5d")]
+
+[node name="CollisionShape3D" parent="InteractableArea" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.247986, 1.30151, -0.0995483)
+
+[editable path="InteractableArea"]

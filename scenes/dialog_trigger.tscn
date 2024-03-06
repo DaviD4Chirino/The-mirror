@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://xa30dqpkt664"]
+
+[ext_resource type="Script" path="res://scenes/dialog_trigger.gd" id="1_qpy1a"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yktst"]
+size = Vector3(0.377441, 1, 3.01123)
+
+[node name="DialogTrigger" type="Area3D"]
+script = ExtResource("1_qpy1a")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_yktst")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
