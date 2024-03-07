@@ -1,10 +1,12 @@
 [gd_scene load_steps=4 format=3 uid="uid://ceitac4y6dw5"]
 
 [ext_resource type="Script" path="res://classes/Pickup.gd" id="1_xp6y6"]
-[ext_resource type="PackedScene" uid="uid://cqkovlfbu4c67" path="res://trenchbroom/solid_classes/interactable_area.tscn" id="2_a7kcj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vfuwr"]
 size = Vector3(0.2, 0.2, 0.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ypnpl"]
+size = Vector3(0.5, 0.5, 0.5)
 
 [node name="PickupEmpty" type="RigidBody3D" node_paths=PackedStringArray("holder")]
 collision_layer = 16384
@@ -14,8 +16,12 @@ holder = NodePath("holder")
 [node name="holder" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0570192, 0)
 
-[node name="InteractableArea" parent="." instance=ExtResource("2_a7kcj")]
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.109636, 0)
 shape = SubResource("BoxShape3D_vfuwr")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15396, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_ypnpl")

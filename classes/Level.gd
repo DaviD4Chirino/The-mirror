@@ -24,7 +24,8 @@ func _input(event):
 		Level.resume()
 
 func _on_game_paused():
-	pause_menu.show()
+	if not DialogManager.in_dialog:
+		pause_menu.show()
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 func _on_game_resumed():

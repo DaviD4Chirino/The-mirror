@@ -55,7 +55,7 @@ script = ExtResource("4_42teu")
 
 [node name="eyes" type="RayCast3D" parent="head"]
 target_position = Vector3(0, 0, -2)
-collision_mask = 16384
+collision_mask = 24576
 collide_with_areas = true
 collide_with_bodies = false
 

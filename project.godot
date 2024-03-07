@@ -54,6 +54,10 @@ folder_colors={
 
 import/fbx/enabled=false
 
+[gui]
+
+theme/custom_font="res://assets/fonts/compass-pro-v1.1/CompassPro.ttf"
+
 [input]
 
 MB1={
@@ -156,6 +160,7 @@ DEBUG_CLEAR={
 [layer_names]
 
 3d_physics/layer_1="player"
+3d_physics/layer_14="interactable"
 3d_physics/layer_15="pickups"
 3d_physics/layer_16="world"
 

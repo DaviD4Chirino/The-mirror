@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://d3rr80644jgyv"]
+[gd_scene load_steps=17 format=3 uid="uid://d3rr80644jgyv"]
 
 [ext_resource type="Script" path="res://scenes/screens/dialog_popup.gd" id="1_kjqhd"]
 [ext_resource type="Texture2D" uid="uid://bmq3ltjgj52gq" path="res://icon.svg" id="2_byee4"]
 [ext_resource type="Script" path="res://resources/DialogTreeData.gd" id="2_ditk3"]
 [ext_resource type="Script" path="res://addons/awesome_input_icons/classes/InputIconTextureRect.gd" id="3_3mvpc"]
 [ext_resource type="Script" path="res://resources/DialogData.gd" id="3_26dx5"]
+[ext_resource type="LabelSettings" uid="uid://b8sf8e4y4irts" path="res://resources/label setting/h1.tres" id="4_x2aue"]
 
 [sub_resource type="Resource" id="Resource_1jvrp"]
 script = ExtResource("3_26dx5")
@@ -29,6 +30,9 @@ gradient = SubResource("Gradient_2yjdt")
 fill_from = Vector2(0, 1)
 fill_to = Vector2(0, 0)
 
+[sub_resource type="LabelSettings" id="LabelSettings_efvql"]
+font_size = 23
+
 [sub_resource type="Animation" id="Animation_tyw5l"]
 length = 0.001
 tracks/0/type = "value"
@@ -46,7 +50,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("MarginContainer/HBoxContainer/VBoxContainer/Character:self_modulate")
+tracks/1/path = NodePath("MarginContainer/HBoxContainer/VBoxContainer/MarginContainer2/Character:self_modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -137,7 +141,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("MarginContainer/HBoxContainer/VBoxContainer/Character:self_modulate")
+tracks/1/path = NodePath("MarginContainer/HBoxContainer/VBoxContainer/MarginContainer2/Character:self_modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -168,16 +172,15 @@ _data = {
 
 [node name="DialogPopup" type="Control" node_paths=PackedStringArray("character_label", "dialog_label", "input_icon_rect", "continue_timer", "anim")]
 layout_mode = 3
-anchors_preset = 12
-anchor_top = 1.0
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -136.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("1_kjqhd")
 dialog_tree = SubResource("Resource_ai4qo")
-character_label = NodePath("MarginContainer/HBoxContainer/VBoxContainer/Character")
+character_label = NodePath("MarginContainer/HBoxContainer/VBoxContainer/MarginContainer2/Character")
 dialog_label = NodePath("MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/Dialog")
 input_icon_rect = NodePath("MarginContainer/HBoxContainer/InputIconTextureRect")
 continue_timer = NodePath("continue_timer")
@@ -188,6 +191,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 298.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_k3sdh")
@@ -197,6 +201,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 304.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 20
@@ -213,10 +218,16 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Character" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+
+[node name="Character" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer2"]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
+mouse_filter = 1
 text = "MIRROR"
+label_settings = ExtResource("4_x2aue")
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -229,7 +240,9 @@ self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(50, 15)
 layout_mode = 2
 size_flags_vertical = 1
-text = "Once upon a time..."
+mouse_filter = 1
+text = "Once upon a time.."
+label_settings = SubResource("LabelSettings_efvql")
 autowrap_mode = 2
 clip_text = true
 text_overrun_behavior = 3

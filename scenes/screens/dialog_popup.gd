@@ -11,15 +11,13 @@ extends Control
 
 var current_character: String
 var current_dialog_index: int = -1
-
 var continue_button_visible: bool = false
 
-signal dialog_finished
 func _ready():
 	self.hide()
 	
 func _input(event):
-	if event.is_action_released("ACTION_INTERACT") and not anim.is_playing():
+	if event.is_action_released("ACTION_INTERACT") and not anim.is_playing() and DialogManager.in_dialog:
 		update_text()
 
 func show_dialog():
@@ -28,6 +26,7 @@ func show_dialog():
 	current_dialog_index = -1
 	update_text()
 	anim.play("show_dialog")
+	SignalBus.dialog_started.emit()
 	await anim.animation_finished
 	continue_timer.start()
 
@@ -71,7 +70,7 @@ func update_text():
 	pass
 
 func finish_dialog():
-	dialog_finished.emit()
+	SignalBus.dialog_finished.emit()
 	await hide_dialog()
 
 func _on_continue_timer_timeout():

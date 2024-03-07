@@ -6,8 +6,11 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_vb3by"]
 font_size = 32
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
 
 [node name="DialogManager" type="CanvasLayer" node_paths=PackedStringArray("message_label", "input_icon", "dialog_popup")]
+process_mode = 3
 follow_viewport_enabled = true
 script = ExtResource("1_t03am")
 message_label = NodePath("Control/MarginContainer/HBoxContainer/InteractableMessage")
@@ -21,6 +24,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="Control"]
 layout_mode = 1
@@ -32,6 +36,7 @@ offset_top = -169.0
 offset_bottom = -73.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 2
 theme_override_constants/margin_left = 15
 theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 15
@@ -39,17 +44,17 @@ theme_override_constants/margin_bottom = 15
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer"]
 layout_mode = 2
+mouse_filter = 2
 alignment = 1
 
 [node name="InputIcon" type="TextureRect" parent="Control/MarginContainer/HBoxContainer"]
 layout_mode = 2
+mouse_filter = 2
 expand_mode = 2
 script = ExtResource("2_lfy7x")
 
 [node name="InteractableMessage" type="Label" parent="Control/MarginContainer/HBoxContainer"]
 layout_mode = 2
-text = "
-"
 label_settings = SubResource("LabelSettings_vb3by")
 vertical_alignment = 1
 

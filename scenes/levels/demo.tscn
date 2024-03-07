@@ -11,7 +11,7 @@
 [ext_resource type="Script" path="res://addons/qodot/game_definitions/fgd/solid_classes/trigger.gd" id="8_62gca"]
 [ext_resource type="PackedScene" uid="uid://ddqxijk1lfhxc" path="res://scenes/player.tscn" id="9_vvgn3"]
 [ext_resource type="Sky" uid="uid://dvdjgka375orq" path="res://resources/new_sky.tres" id="10_mfphr"]
-[ext_resource type="PackedScene" uid="uid://cys1ix6w68m2r" path="res://assets/models/mirror.glb" id="12_u33cu"]
+[ext_resource type="PackedScene" uid="uid://bj1vbtnybe65h" path="res://scenes/character_mirror.tscn" id="12_2a8sq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fqhww"]
 
@@ -200,8 +200,8 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -5.688
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_amj5c")
 
-[node name="mirror" parent="." instance=ExtResource("12_u33cu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.75731, 4.76837e-07, 3.74945)
+[node name="CharacterMirror" parent="." instance=ExtResource("12_2a8sq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.68851, 0, 4.89341)
 
 [connection signal="trigger" from="QodotMap/entity_2_trigger" to="QodotMap/entity_1_mover" method="use"]
 [connection signal="trigger" from="QodotMap/entity_3_trigger" to="QodotMap/entity_1_mover" method="reverse_motion"]

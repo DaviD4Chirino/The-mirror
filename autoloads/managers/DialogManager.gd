@@ -7,13 +7,8 @@ extends CanvasLayer
 var displaying_message: bool = false
 var current_message: String
 var current_duration: float = 0.0
-
-var send_message_properties = {
-	message = "",
-	duration = 3.0,
-	unique = true,
-	action_name = &""
-}
+## TO know if the player is currently engaged in dialog
+var in_dialog: bool = false
 
 ## A list of all the nodes that called 
 var messengers: Array[Node] = []
@@ -63,11 +58,14 @@ func initialize_dialog(tree: DialogTreeData, node: Node, unique=false):
 
 	dialog_popup.dialog_tree = null
 	dialog_popup.dialog_tree = tree
-	Player.can_move = false
+
+	in_dialog = true
+	Level.pause()
 	dialog_popup.show_dialog()
 
-	await dialog_popup.dialog_finished
-	Player.can_move = true
+	await SignalBus.dialog_finished
+	in_dialog = false
+	Level.resume()
 
 func _clear_messages():
 	message_label.text = ""
