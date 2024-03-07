@@ -1,3 +1,0 @@
-QodotFGDSolidClass
-QodotFGDPointClass
-Sky
