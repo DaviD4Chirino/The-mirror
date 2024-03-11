@@ -1,7 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://cqkovlfbu4c67"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lph46"]
-size = Vector3(1, 0.907776, 1)
+size = Vector3(1.06775, 1.6337, 2.36401)
 
 [node name="InteractableArea" type="Area3D"]
 collision_layer = 16384

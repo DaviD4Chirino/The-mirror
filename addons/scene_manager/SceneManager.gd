@@ -9,8 +9,8 @@ var is_transitioning := false
 @onready var _tree := get_tree()
 @onready var _root := _tree.get_root()
 @onready var _current_scene := _tree.current_scene
-@onready var _animation_player : AnimationPlayer = $AnimationPlayer
-@onready var _shader_blend_rect : ColorRect = $CanvasLayer/ColorRect
+@onready var _animation_player: AnimationPlayer = $AnimationPlayer
+@onready var _shader_blend_rect: ColorRect = $CanvasLayer/ColorRect
 
 var default_options := {
 	"speed": 2,
@@ -48,14 +48,14 @@ func _set_singleton_entities() -> void:
 		SceneManagerConstants.SINGLETON_GROUP_NAME
 	)
 	for entity in entities:
-		var has_entity_name : bool = entity.has_meta(SceneManagerConstants.SINGLETON_META_NAME)
-		assert(has_entity_name,"The node was set as a singleton entity, but no entity name was provided.")
+		var has_entity_name: bool = entity.has_meta(SceneManagerConstants.SINGLETON_META_NAME)
+		assert(has_entity_name, "The node was set as a singleton entity, but no entity name was provided.")
 		var entity_name = entity.get_meta(SceneManagerConstants.SINGLETON_META_NAME)
-		assert(not singleton_entities.has(entity_name),"The entity name %s is already being used more than once! Please check that your entity name is unique within the scene.")
+		assert(not singleton_entities.has(entity_name), "The entity name %s is already being used more than once! Please check that your entity name is unique within the scene.")
 		singleton_entities[entity_name] = entity
 
 func get_entity(entity_name: String) -> Node:
-	assert(singleton_entities.has(entity_name),"Entity is not set as a singleton entity. Please define it in the editor.")
+	assert(singleton_entities.has(entity_name), "Entity is not set as a singleton entity. Please define it in the editor.")
 	return singleton_entities[entity_name]
 
 func _load_pattern(pattern) -> Texture:
@@ -97,7 +97,7 @@ func _process(_delta: float) -> void:
 	if _tree.current_scene != _previous_scene:
 		_previous_scene = _tree.current_scene
 
-func change_scene(path: Variant, setted_options: Dictionary = {}) -> void:
+func change_scene(path: Variant, setted_options: Dictionary={}) -> void:
 	assert(path == null or path is String, 'Path must be a string')
 	var options = _get_final_options(setted_options)
 	if not options["skip_fade_out"]:
@@ -111,7 +111,7 @@ func change_scene(path: Variant, setted_options: Dictionary = {}) -> void:
 	if not options["skip_fade_in"]:
 		await fade_in(setted_options)
 
-func reload_scene(setted_options: Dictionary = {}) -> void:
+func reload_scene(setted_options: Dictionary={}) -> void:
 	await change_scene(null, setted_options)
 
 func _reload_scene() -> void:
@@ -119,7 +119,7 @@ func _reload_scene() -> void:
 	await _tree.create_timer(0.0).timeout
 	_current_scene = _tree.current_scene
 
-func fade_in_place(setted_options: Dictionary = {}) -> void:
+func fade_in_place(setted_options: Dictionary={}) -> void:
 	setted_options["no_scene_change"] = true
 	await change_scene(null, setted_options)
 
@@ -134,7 +134,7 @@ func _replace_scene(path: String, options: Dictionary) -> void:
 	_root.add_child(_current_scene)
 	_tree.set_current_scene(_current_scene)
 
-func fade_out(setted_options: Dictionary= {}) -> void:
+func fade_out(setted_options: Dictionary={}) -> void:
 	var options = _get_final_options(setted_options)
 	is_transitioning = true
 	_animation_player.speed_scale = options["speed"]
@@ -153,7 +153,7 @@ func fade_out(setted_options: Dictionary= {}) -> void:
 	fade_complete.emit()
 	options["on_fade_out"].call()
 
-func fade_in(setted_options: Dictionary = {}) -> void:
+func fade_in(setted_options: Dictionary={}) -> void:
 	var options = _get_final_options(setted_options)
 	_animation_player.speed_scale = options["speed"]
 	_shader_blend_rect.material.set_shader_parameter(

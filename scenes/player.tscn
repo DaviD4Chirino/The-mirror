@@ -14,10 +14,11 @@ albedo_texture = ExtResource("2_jw1id")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_su0fi"]
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("hand", "eyes", "feet")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("hand", "eyes", "head", "feet")]
 script = ExtResource("1_dl41v")
 hand = NodePath("head/hand")
 eyes = NodePath("head/eyes")
+head = NodePath("head")
 feet = NodePath("feet")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -65,4 +66,5 @@ transform = Transform3D(-0.0559738, 0.96929, 0.239466, -0.998337, -0.0576512, 0,
 [node name="feet" type="Node3D" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("6_1wkxp")
 player = NodePath("..")
+speed = 3.5
 acceleration = 10.0

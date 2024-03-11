@@ -34,7 +34,7 @@ func hide_dialog():
 	await hide_continue_button()
 	anim.play_backwards("show_dialog")
 	await anim.animation_finished
-
+	current_character = ""
 	self.hide()
 
 func show_continue_button():

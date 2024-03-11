@@ -1,4 +1,6 @@
 extends Area3D
+
+# Forgive me Qodot team for what i have done
 @export var properties: Dictionary:
 	get:
 		return properties # TODOConverter40 Non existent get function
@@ -7,6 +9,9 @@ extends Area3D
 			properties = new_properties
 			update_properties()
 
+##To check if this has already been triggered and how many times
+var triggered: int = 0
+var already_open: bool = false
 var item_name: String = ""
 var consume_item: bool = false
 
@@ -23,20 +28,23 @@ func update_properties():
 
 func handle_body_entered(body: Node):
 	if body is Player:
+		triggered += 1
 		
 		if item_name:
 			if Player.item and Player.item.name == item_name:
 				emit_signal("trigger")
 				if consume_item:
 					g.player.clear_pickups()
+				already_open = true
 			else:
-				DialogManager.send_message(
-					self,
-					str("you need a [%s]" % [item_name]),
-					"",
-					1.5,
-					false
-				)
+				if not already_open:
+					DialogManager.send_message(
+						self,
+						str("you need a [%s]" % [item_name]),
+						"",
+						1.5,
+						false
+					)
 		else:
 			emit_signal("trigger")
 

@@ -25,6 +25,7 @@ func create_options() -> void:
 	option_button.select(get_screen_mode())
 
 func change_screen_mode(mode: int) -> void:
+	
 	match mode:
 		WINDOWED:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)

@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://csn8hpixsyoef"]
+
+[ext_resource type="Script" path="res://scenes/general_light.gd" id="1_hvtll"]
+
+[node name="GeneralLight" type="OmniLight3D"]
+light_energy = 0.1
+shadow_enabled = true
+shadow_bias = 3.0
+shadow_opacity = 0.3
+distance_fade_enabled = true
+distance_fade_shadow = 0.0
+omni_range = 11.0
+omni_attenuation = 0.0947327
+script = ExtResource("1_hvtll")

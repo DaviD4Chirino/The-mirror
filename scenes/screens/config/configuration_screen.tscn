@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://biat56s5n0eww"]
+[gd_scene load_steps=10 format=3 uid="uid://biat56s5n0eww"]
 
 [ext_resource type="Script" path="res://scenes/screens/config/configuration_screen.gd" id="1_c3on6"]
 [ext_resource type="PackedScene" uid="uid://dwuxhfr6uc10s" path="res://scenes/screens/config/inputs_config.tscn" id="1_ub6ae"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://d2d65r6gy5sye" path="res://scenes/screens/config/audio_config.tscn" id="2_csv1u"]
 [ext_resource type="Script" path="res://classes/custom/CustomButton.gd" id="3_0chcd"]
 [ext_resource type="Script" path="res://scenes/screens/config/restore_button.gd" id="3_aip03"]
+[ext_resource type="PackedScene" uid="uid://ivi3rv83xlkr" path="res://scenes/screens/config/enable_shadows.tscn" id="4_ad2ss"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_jusli"]
 font_size = 20
@@ -78,6 +79,9 @@ label_settings = SubResource("LabelSettings_jusli")
 [node name="ScreenMode" parent="margin/VBoxContainer/TabContainer/General/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("1_y20uq")]
 layout_mode = 2
 
+[node name="enable_shadows" parent="margin/VBoxContainer/TabContainer/General/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("4_ad2ss")]
+layout_mode = 2
+
 [node name="separator" type="ColorRect" parent="margin/VBoxContainer/TabContainer/General/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 2)
 layout_mode = 2
@@ -96,7 +100,7 @@ layout_mode = 2
 tooltip_text = "Change the configuration options to the default"
 text = "Restore"
 script = ExtResource("3_aip03")
-restore_nodes = [NodePath("../ScrollContainer/MarginContainer/VBoxContainer/ScreenMode"), NodePath("../ScrollContainer/MarginContainer/VBoxContainer/AudioConfig")]
+restore_nodes = [NodePath("../ScrollContainer/MarginContainer/VBoxContainer/ScreenMode"), NodePath("../ScrollContainer/MarginContainer/VBoxContainer/AudioConfig"), NodePath("../ScrollContainer/MarginContainer/VBoxContainer/enable_shadows")]
 
 [node name="Controls" type="MarginContainer" parent="margin/VBoxContainer/TabContainer"]
 visible = false

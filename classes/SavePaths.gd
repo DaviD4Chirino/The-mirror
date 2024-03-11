@@ -16,3 +16,6 @@ static var input_map: String = "input_map"
 
 ## Int: see DisplayServer.WindowMode for reference
 static var video_settings: String = "video_settings"
+
+## Bool
+static var enable_shadows: String = "enable_shadows"

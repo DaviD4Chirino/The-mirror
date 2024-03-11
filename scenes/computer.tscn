@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://ctet6n5asnsth"]
+
+[ext_resource type="PackedScene" uid="uid://dwi5ahg3cutvx" path="res://assets/models/computer desk.glb" id="1_b6wbr"]
+[ext_resource type="Script" path="res://scenes/computer.gd" id="1_ricyk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lph46"]
+size = Vector3(1.06775, 1.6337, 2.36401)
+
+[node name="Computer" type="Node3D"]
+script = ExtResource("1_ricyk")
+
+[node name="InteractableArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_layer = 16384
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.243942, 0, 0.0216064)
+shape = SubResource("BoxShape3D_lph46")
+
+[node name="computer desk" parent="." instance=ExtResource("1_b6wbr")]

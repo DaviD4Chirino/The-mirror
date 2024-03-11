@@ -1,0 +1,39 @@
+[gd_scene load_steps=10 format=3 uid="uid://hiw241hoion5"]
+
+[ext_resource type="Script" path="res://scenes/levels/level_1.gd" id="1_rvbok"]
+[ext_resource type="PackedScene" uid="uid://ds4whqb8apmwn" path="res://scenes/screens/pause_menu.tscn" id="2_cacay"]
+[ext_resource type="PackedScene" uid="uid://c243hs1rd1oau" path="res://scenes/house.tscn" id="3_it68q"]
+[ext_resource type="PackedScene" uid="uid://ceitac4y6dw5" path="res://scenes/pickup_empty.tscn" id="4_jttvq"]
+[ext_resource type="Resource" uid="uid://dl2p2nwmvh5hy" path="res://resources/items/key.tres" id="5_4aymn"]
+[ext_resource type="PackedScene" uid="uid://bcnv1m1vpq0r5" path="res://scenes/conection_room.tscn" id="6_afg1d"]
+[ext_resource type="PackedScene" uid="uid://dijaiyh4a1dp1" path="res://assets/models/bed_frame.glb" id="7_n2uxi"]
+[ext_resource type="PackedScene" uid="uid://bt8e5mnplo6yx" path="res://assets/models/shelf.glb" id="8_xa137"]
+[ext_resource type="PackedScene" uid="uid://dektr31bfr8wl" path="res://scenes/teleport_scene_trigger.tscn" id="9_lhasv"]
+
+[node name="Level1" type="Node3D" node_paths=PackedStringArray("pause_menu")]
+script = ExtResource("1_rvbok")
+pause_menu = NodePath("pause_menu")
+
+[node name="pause_menu" parent="." instance=ExtResource("2_cacay")]
+visible = false
+
+[node name="house" parent="." instance=ExtResource("3_it68q")]
+
+[node name="Key" parent="." instance=ExtResource("4_jttvq")]
+transform = Transform3D(-0.213746, 0, -0.976889, 0, 1, 0, 0.976889, 0, -0.213746, 19.5829, 0.822149, 4.60543)
+item = ExtResource("5_4aymn")
+
+[node name="ConectionRoom" parent="." instance=ExtResource("6_afg1d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.7839, -0.503435, -0.306)
+
+[node name="davids props" type="Node3D" parent="ConectionRoom"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.66924, 1.718, 8.05307)
+
+[node name="bed_frame" parent="ConectionRoom/davids props" instance=ExtResource("7_n2uxi")]
+
+[node name="shelf2" parent="ConectionRoom/davids props" instance=ExtResource("8_xa137")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.71722, -1.218, -1.41649)
+
+[node name="TeleportSceneTrigger" parent="." instance=ExtResource("9_lhasv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.5896, 0.528082, 3.33084)
+change_scene_to = "res://scenes/level_2.tscn"

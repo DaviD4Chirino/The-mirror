@@ -1,0 +1,14 @@
+[gd_resource type="Environment" load_steps=2 format=3 uid="uid://dlkwwtfm48bl6"]
+
+[ext_resource type="Sky" uid="uid://dvdjgka375orq" path="res://resources/new_sky.tres" id="1_hilyr"]
+
+[resource]
+background_mode = 2
+sky = ExtResource("1_hilyr")
+ambient_light_source = 2
+ambient_light_color = Color(0.662745, 0.662745, 0.662745, 1)
+tonemap_mode = 3
+fog_light_color = Color(0, 0, 0, 1)
+fog_density = 0.4
+fog_sky_affect = 0.0
+adjustment_brightness = 0.01

@@ -1,0 +1,14 @@
+[remap]
+
+importer="qodot.map"
+type="Resource"
+uid="uid://b6k6trdtfsysv"
+path="res://.godot/imported/connection_room.map-43bbb15270137792e0075403a88583b0.tres"
+
+[deps]
+
+source_file="res://scenes/levels/connection_room.map"
+dest_files=["res://.godot/imported/connection_room.map-43bbb15270137792e0075403a88583b0.tres"]
+
+[params]
+

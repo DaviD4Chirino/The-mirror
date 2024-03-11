@@ -5,6 +5,7 @@ class_name Player
 @export_category("Nodes")
 @export var hand: Marker3D
 @export var eyes: RayCast3D
+@export var head: Node3D
 @export var feet: Node3D
 static var item: Item
 
@@ -32,6 +33,8 @@ func handle_pickup() -> void:
 	if collider:
 		if collider.owner.has_method("interact"):
 			collider.owner.interact()
+		else:
+			print("no method interact in : ", collider)
 
 ## It takes care of making sure that the previous grabbed object
 ## is cleared before adding another

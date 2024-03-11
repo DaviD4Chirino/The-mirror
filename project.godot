@@ -58,6 +58,43 @@ import/fbx/enabled=false
 
 theme/custom_font="res://assets/fonts/compass-pro-v1.1/CompassPro.ttf"
 
+[importer_defaults]
+
+scene={
+"_subresources": {
+"meshes": {
+"lightbulb_Sphere": {
+"generate/lightmap_uv": 1,
+"generate/lods": 1,
+"generate/shadow_meshes": 1,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": false,
+"save_to_file/make_streamable": "",
+"save_to_file/path": ""
+}
+}
+},
+"animation/fps": 30,
+"animation/import": true,
+"animation/remove_immutable_tracks": true,
+"animation/trimming": false,
+"gltf/embedded_image_handling": 3,
+"gltf/naming_version": 1,
+"import_script/path": "",
+"meshes/create_shadow_meshes": true,
+"meshes/ensure_tangents": true,
+"meshes/force_disable_compression": false,
+"meshes/generate_lods": true,
+"meshes/light_baking": 3,
+"meshes/lightmap_texel_size": 0.2,
+"nodes/apply_root_scale": true,
+"nodes/root_name": "",
+"nodes/root_scale": 1.0,
+"nodes/root_type": "Node3D",
+"skins/use_named_skins": true
+}
+
 [input]
 
 MB1={
@@ -148,7 +185,7 @@ MOVE_RIGHT={
 }
 ACTION_INTERACT={
 "deadzone": 0.5,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":69,"key_label":0,"unicode":101,"echo":false,"script":null)
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(162, 19),"global_position":Vector2(165, 51),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
 ]
 }
 DEBUG_CLEAR={

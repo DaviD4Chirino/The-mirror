@@ -1,30 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://bj1vbtnybe65h"]
+[gd_scene load_steps=4 format=3 uid="uid://bj1vbtnybe65h"]
 
 [ext_resource type="Script" path="res://classes/NPC.gd" id="1_at3f4"]
 [ext_resource type="PackedScene" uid="uid://cys1ix6w68m2r" path="res://assets/models/mirror.glb" id="1_jaluk"]
-[ext_resource type="Script" path="res://resources/DialogTreeData.gd" id="2_2hnsl"]
-[ext_resource type="Script" path="res://resources/DialogData.gd" id="3_kdmmy"]
-
-[sub_resource type="Resource" id="Resource_b6q22"]
-script = ExtResource("3_kdmmy")
-character = "Mirror"
-dialog = "You are not fit to be reflected by me"
-
-[sub_resource type="Resource" id="Resource_3rcf7"]
-script = ExtResource("3_kdmmy")
-character = ""
-dialog = "Go away"
-
-[sub_resource type="Resource" id="Resource_s8lc8"]
-script = ExtResource("2_2hnsl")
-tree = Array[ExtResource("3_kdmmy")]([SubResource("Resource_b6q22"), SubResource("Resource_3rcf7")])
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sckfy"]
 size = Vector3(1, 3.50732, 2.79675)
 
 [node name="CharacterMirror2" type="Node3D"]
 script = ExtResource("1_at3f4")
-dialog_tree = SubResource("Resource_s8lc8")
 
 [node name="mirror" parent="." instance=ExtResource("1_jaluk")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)

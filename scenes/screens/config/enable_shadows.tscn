@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://ivi3rv83xlkr"]
+
+[ext_resource type="Script" path="res://scenes/screens/config/enable_shadows.gd" id="1_jsy46"]
+
+[node name="enable_shadows" type="HBoxContainer" node_paths=PackedStringArray("check")]
+script = ExtResource("1_jsy46")
+check = NodePath("CheckBox")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Enable Shadows?"
+
+[node name="CheckBox" type="CheckBox" parent="."]
+layout_mode = 2
+
+[connection signal="toggled" from="CheckBox" to="." method="_on_check_box_toggled"]

@@ -15,8 +15,11 @@ func _on_main_menu_button_pressed():
 	consent_screen.accepted.connect(_return_to_main_menu)
 
 func _on_quit_button_pressed():
-	var consent_screen: CanvasLayer = Utility.create_consent_screen("Quit the game?")
-	consent_screen.accepted.connect(Utility.quit_game)
+	Utility.create_consent_screen(
+		"Quit the game?"
+		).accepted.connect(
+			Utility.quit_game
+			)
 
 func _return_to_main_menu() -> void:
 	print_debug("returning to main menu")
