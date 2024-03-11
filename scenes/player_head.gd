@@ -3,7 +3,11 @@ extends Node3D
 @export var mouse_sensitivity: float = 0.002
 ## How much is the player allowed to look up and down
 @export var max_view: float = 90
-@export var camera: PhantomCamera3D
+@export var camera: Camera3D
+# @export var weapon_camera: Camera3D
+
+# func _process(_delta):
+# 	weapon_camera.global_transform = camera.global_transform
 
 func _input(event):
 	if not Player.can_move:

@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="DialogTreeData" load_steps=7 format=3 uid="uid://b0mrcrgmpwhqw"]
+
+[ext_resource type="Script" path="res://resources/DialogTreeData.gd" id="1_ik0ou"]
+[ext_resource type="Script" path="res://resources/DialogData.gd" id="2_qbmus"]
+
+[sub_resource type="Resource" id="Resource_qr45a"]
+script = ExtResource("2_qbmus")
+character = ""
+dialog = "Its a mirror, but you cannot see yourself"
+
+[sub_resource type="Resource" id="Resource_uayhs"]
+script = ExtResource("2_qbmus")
+character = "Mirror"
+dialog = "You are not fit to be reflected by me"
+
+[sub_resource type="Resource" id="Resource_6x3r3"]
+script = ExtResource("2_qbmus")
+character = ""
+dialog = "You could not get out of the house. Truly pathetic"
+
+[sub_resource type="Resource" id="Resource_d2hwm"]
+script = ExtResource("2_qbmus")
+character = ""
+dialog = "I hid the key, go do something else"
+
+[resource]
+script = ExtResource("1_ik0ou")
+tree = Array[ExtResource("2_qbmus")]([SubResource("Resource_qr45a"), SubResource("Resource_uayhs"), SubResource("Resource_6x3r3"), SubResource("Resource_d2hwm")])

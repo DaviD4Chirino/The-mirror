@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://eayy5uq52ioe"]
+
+[ext_resource type="PackedScene" uid="uid://bqdekidplkopb" path="res://assets/models/key.glb" id="1_q8uu7"]
+
+[node name="key" instance=ExtResource("1_q8uu7")]
+
+[node name="Circle" parent="." index="0"]
+layers = 2

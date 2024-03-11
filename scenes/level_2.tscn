@@ -1,4 +1,4 @@
-[gd_scene load_steps=119 format=3 uid="uid://cen0bg7skewad"]
+[gd_scene load_steps=117 format=3 uid="uid://cen0bg7skewad"]
 
 [ext_resource type="Script" path="res://scenes/house.gd" id="1_lnrm0"]
 [ext_resource type="Script" path="res://scenes/level_2.gd" id="1_rp7ax"]
@@ -28,6 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://bwsw0ilplqp5c" path="res://trenchbroom/textures/nanners/tile003.png" id="28_0476t"]
 [ext_resource type="Environment" uid="uid://dlkwwtfm48bl6" path="res://resources/enviroment.tres" id="29_dcvgs"]
 [ext_resource type="PackedScene" uid="uid://bj1vbtnybe65h" path="res://scenes/character_mirror.tscn" id="29_n50yj"]
+[ext_resource type="Resource" uid="uid://b0mrcrgmpwhqw" path="res://resources/dialogs/mirror1.tres" id="29_xsh66"]
 [ext_resource type="Script" path="res://resources/DialogTreeData.gd" id="30_b4uha"]
 [ext_resource type="Script" path="res://resources/DialogData.gd" id="31_mcbv4"]
 
@@ -544,34 +545,18 @@ points = PackedVector3Array(-4.07292, -2.04167, -3.875, -4.07292, -2.54167, -3.8
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ghwdk"]
 points = PackedVector3Array(-3.94792, 2.95833, -3.875, -3.94792, -2.04167, -3.875, -3.82292, -2.04167, -3.875, -3.82292, 2.95833, -3.875, -3.94792, 2.95833, 3.625, -3.94792, -2.04167, 3.625, -3.82292, -2.04167, 3.625, -3.82292, 2.95833, 3.625)
 
-[sub_resource type="Resource" id="Resource_qr45a"]
-script = ExtResource("31_mcbv4")
-character = ""
-dialog = "Its a mirror, but you cannot see yourself"
-
-[sub_resource type="Resource" id="Resource_uayhs"]
+[sub_resource type="Resource" id="Resource_h71fq"]
 script = ExtResource("31_mcbv4")
 character = "Mirror"
-dialog = "You are not fit to be reflected by me"
+dialog = "Dont event think about searching for it"
 
-[sub_resource type="Resource" id="Resource_6x3r3"]
-script = ExtResource("31_mcbv4")
-character = ""
-dialog = "You could not get out of the house. Truly pathetic"
-
-[sub_resource type="Resource" id="Resource_d2hwm"]
-script = ExtResource("31_mcbv4")
-character = ""
-dialog = "I hid the key, go do something else"
-
-[sub_resource type="Resource" id="Resource_xyxeo"]
+[sub_resource type="Resource" id="Resource_8ul66"]
 script = ExtResource("30_b4uha")
-tree = Array[ExtResource("31_mcbv4")]([SubResource("Resource_qr45a"), SubResource("Resource_uayhs"), SubResource("Resource_6x3r3"), SubResource("Resource_d2hwm")])
+tree = Array[ExtResource("31_mcbv4")]([SubResource("Resource_h71fq")])
 
 [node name="Level2" type="Node3D" node_paths=PackedStringArray("key_spawns_holder", "pause_menu")]
 script = ExtResource("1_rp7ax")
 key_spawns_holder = NodePath("KeySpawnPositions")
-next_level = null
 pause_menu = NodePath("pause_menu")
 
 [node name="pause_menu" parent="." node_paths=PackedStringArray("options_screen") instance=ExtResource("2_4xlv0")]
@@ -1072,7 +1057,8 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.717
 
 [node name="CharacterMirror2" parent="." instance=ExtResource("29_n50yj")]
 transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, 22.7746, 0, 9.28315)
-dialog_tree = SubResource("Resource_xyxeo")
+dialog_tree = ExtResource("29_xsh66")
+idle_dialog = SubResource("Resource_8ul66")
 
 [node name="KeySpawnPositions" type="Node3D" parent="."]
 
@@ -1083,10 +1069,10 @@ transform = Transform3D(0.21303, 0, 0.977046, 0, 1, 0, -0.977046, 0, 0.21303, 23
 transform = Transform3D(0.952661, 0, 0.304033, 0, 1, 0, -0.304033, 0, 0.952661, 18.871, -0.043, 11.676)
 
 [node name="SpawnPos3" type="Marker3D" parent="KeySpawnPositions"]
-transform = Transform3D(-0.0471064, 0, 0.99889, 0, 1, 0, -0.99889, 0, -0.0471064, 15.764, 0.946, 1.589)
+transform = Transform3D(-0.0471064, 0, 0.99889, 0, 1, 0, -0.99889, 0, -0.0471064, 15.8492, 1.06308, 3.39672)
 
 [node name="SpawnPos4" type="Marker3D" parent="KeySpawnPositions"]
-transform = Transform3D(-0.0471064, 0, 0.99889, 0, 1, 0, -0.99889, 0, -0.0471064, 12.242, 1.005, 4.12)
+transform = Transform3D(-0.0471064, 0, 0.99889, 0, 1, 0, -0.99889, 0, -0.0471064, 12.242, 1.61575, 4.12)
 
 [node name="SpawnPos5" type="Marker3D" parent="KeySpawnPositions"]
 transform = Transform3D(0.999848, 0, 0.0174524, 0, 1, 0, -0.0174524, 0, 0.999848, 8.244, -0.024, 2.338)

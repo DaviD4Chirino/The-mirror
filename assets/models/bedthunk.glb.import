@@ -33,6 +33,10 @@ _subresources={
 "nodes": {
 "PATH:bedthunk": {
 "generate/physics": true
+},
+"PATH:bedthunk/bed": {
+"generate/physics": true,
+"physics/shape_type": 1
 }
 }
 }

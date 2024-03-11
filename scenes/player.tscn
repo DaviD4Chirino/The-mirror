@@ -1,11 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://ddqxijk1lfhxc"]
+[gd_scene load_steps=11 format=3 uid="uid://ddqxijk1lfhxc"]
 
 [ext_resource type="Script" path="res://classes/Player.gd" id="1_dl41v"]
 [ext_resource type="Texture2D" uid="uid://bw3ud1m3hvqot" path="res://trenchbroom/textures/clip.png" id="2_jw1id"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3D.gd" id="3_sgu6p"]
 [ext_resource type="Script" path="res://scenes/player_head.gd" id="3_yhurf"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="4_42teu"]
 [ext_resource type="Script" path="res://scenes/player_movement.gd" id="6_1wkxp"]
+[ext_resource type="PackedScene" uid="uid://ceitac4y6dw5" path="res://scenes/pickup_empty.tscn" id="6_ujk2a"]
+[ext_resource type="Resource" uid="uid://dl2p2nwmvh5hy" path="res://resources/items/key.tres" id="7_m83ma"]
+[ext_resource type="Environment" uid="uid://dlkwwtfm48bl6" path="res://resources/enviroment.tres" id="7_tt07g"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xbpib"]
 albedo_texture = ExtResource("2_jw1id")
@@ -29,39 +30,29 @@ mesh = SubResource("CapsuleMesh_cbgyd")
 shape = SubResource("CapsuleShape3D_su0fi")
 
 [node name="head" type="Node3D" parent="." node_paths=PackedStringArray("player", "camera")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 script = ExtResource("3_yhurf")
 player = NodePath("..")
-camera = NodePath("PhantomCamera3D")
-
-[node name="PhantomCamera3D" type="Node3D" parent="head"]
-transform = Transform3D(1, 0, 5.96046e-08, 7.10543e-14, 1.00008, -1.3411e-07, 5.36442e-07, 1.3411e-07, 1.00008, 0, 0, 0)
-script = ExtResource("3_sgu6p")
-priority_override = false
-priority = 1
-follow_mode = 1
-follow_target = NodePath("..")
-follow_parameters/damping = false
-look_at_mode = 0
-tween_parameters = null
-tween_on_load = false
-inactive_update_mode = 0
-camera_3D_resource = null
+camera = NodePath("Camera3D")
 
 [node name="Camera3D" type="Camera3D" parent="head"]
-transform = Transform3D(1, 0, 5.96046e-08, 7.10543e-14, 1.00008, -1.3411e-07, 5.36442e-07, 1.3411e-07, 1.00008, 0, 0, 0)
-
-[node name="PhantomCameraHost" type="Node" parent="head/Camera3D"]
-script = ExtResource("4_42teu")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+environment = ExtResource("7_tt07g")
+current = true
+fov = 90.0
 
 [node name="eyes" type="RayCast3D" parent="head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 target_position = Vector3(0, 0, -2)
 collision_mask = 24576
 collide_with_areas = true
 collide_with_bodies = false
 
 [node name="hand" type="Marker3D" parent="head"]
-transform = Transform3D(-0.0559738, 0.96929, 0.239466, -0.998337, -0.0576512, 0, 0.0138055, -0.239067, 0.970905, 0.467532, -0.294179, -0.657486)
+transform = Transform3D(-0.0559738, 0.96929, 0.239466, -0.998337, -0.0576512, 0, 0.0138055, -0.239067, 0.970905, 0.468, 0.2, -0.657)
+
+[node name="PickupEmpty" parent="head/hand" instance=ExtResource("6_ujk2a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+item = ExtResource("7_m83ma")
 
 [node name="feet" type="Node3D" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("6_1wkxp")

@@ -1,5 +1,6 @@
 extends Level
 const pickup_empty: String = "res://scenes/pickup_empty.tscn"
+
 @export var key_spawns_holder: Node3D
 
 func ready():
@@ -11,6 +12,11 @@ func _on_dialog_finished():
 
 	add_child(key)
 	key.global_transform = rand_position.global_transform
+	#Debug
+	# for child in key_spawns_holder.get_children():
+	# 	var _key: Pickup = create_key()
+	# 	add_child(_key)
+	# 	_key.global_transform = child.global_transform
 
 func create_key() -> Pickup:
 	var new_pickup = load(pickup_empty).instantiate()

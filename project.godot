@@ -196,6 +196,8 @@ DEBUG_CLEAR={
 
 [layer_names]
 
+3d_render/layer_1="default"
+3d_render/layer_2="weapon"
 3d_physics/layer_1="player"
 3d_physics/layer_14="interactable"
 3d_physics/layer_15="pickups"
