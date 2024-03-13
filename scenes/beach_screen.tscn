@@ -20,10 +20,10 @@ credits = NodePath("credits")
 transform = Transform3D(2.52324, 0, 0, 0, 1, 0, 0, 0, 1.84929, -10.2352, 0, 17.4138)
 
 [node name="umbrella2" parent="." instance=ExtResource("2_1dw1n")]
-transform = Transform3D(0.961516, 0.242363, -0.12941, -0.266457, 0.937422, -0.224144, 0.0669873, 0.25, 0.965926, -1.72838, 1.17017, -11.634)
+transform = Transform3D(0.961516, 0.242363, -0.12941, -0.266457, 0.937422, -0.224144, 0.0669873, 0.25, 0.965926, -1.72838, 1.17017, -9.88425)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.96311, 0.801861, -9.18794)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.96311, 0.801861, -7.90392)
 current = true
 
 [node name="mirror_shattered" parent="." instance=ExtResource("3_76do0")]
@@ -39,4 +39,4 @@ transform = Transform3D(2.69405, 4.19139, -0.417539, -4.00842, 2.7034, 1.27444, 
 environment = ExtResource("4_1admk")
 
 [node name="credits" parent="." instance=ExtResource("6_miygb")]
-transform = Transform3D(0.868632, 0.495459, -2.16572e-08, 0, -4.37114e-08, -1, -0.495459, 0.868632, -3.79691e-08, -4.121, -9.55819, -16.717)
+transform = Transform3D(0.868632, 0.495459, -2.16572e-08, 0, -4.37114e-08, -1, -0.495459, 0.868632, -3.79691e-08, -4.121, -9.78519, -16.717)

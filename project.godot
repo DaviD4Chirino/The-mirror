@@ -10,10 +10,11 @@ config_version=5
 
 [application]
 
-config/name="acerola jam"
+config/name="The Mirror"
+config/version="1"
 run/main_scene="res://scenes/screens/main_menu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="res://assets/mirror icon med.png"
 
 [autoload]
 

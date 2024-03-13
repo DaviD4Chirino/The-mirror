@@ -1,7 +1,7 @@
 [gd_scene load_steps=107 format=3 uid="uid://r1ckml56ylag"]
 
 [ext_resource type="Script" path="res://scenes/levels/level_3.gd" id="1_r0cl2"]
-[ext_resource type="AudioStream" uid="uid://b642fymhf2cw7" path="res://assets/audio/music/Buzzsaw.mp3" id="2_31a7w"]
+[ext_resource type="AudioStream" uid="uid://dtw5udd2xlidw" path="res://assets/audio/music/crash-test-moire-main-version-01-55-10811.mp3" id="2_l4rtq"]
 [ext_resource type="PackedScene" uid="uid://ds4whqb8apmwn" path="res://scenes/screens/pause_menu.tscn" id="2_nbg44"]
 [ext_resource type="Script" path="res://scenes/house.gd" id="3_h6kmn"]
 [ext_resource type="PackedScene" uid="uid://ddqxijk1lfhxc" path="res://scenes/player.tscn" id="4_d2qmr"]
@@ -540,7 +540,7 @@ size = Vector3(1, 1, 2.97961)
 [node name="level_3" type="Node3D" node_paths=PackedStringArray("exit_door", "pause_menu")]
 script = ExtResource("1_r0cl2")
 exit_door = NodePath("house/QodotMap/entity_8_mover")
-music = ExtResource("2_31a7w")
+music = ExtResource("2_l4rtq")
 pause_menu = NodePath("pause_menu")
 
 [node name="pause_menu" parent="." instance=ExtResource("2_nbg44")]

@@ -8,7 +8,13 @@ extends Node3D
 
 # func _process(_delta):
 # 	weapon_camera.global_transform = camera.global_transform
+func _ready():
+	mouse_sensitivity = SaveSystem.get_var(
+		SavePaths.mouse_sensitivity,
+		mouse_sensitivity
+		)
 
+	SignalBus.settings_changed.connect(_on_settings_changed)
 func _input(event):
 	if not Player.can_move:
 		return
@@ -20,4 +26,9 @@ func _input(event):
 			- deg_to_rad(max_view),
 			deg_to_rad(max_view)
 		)
-	
+
+func _on_settings_changed():
+	mouse_sensitivity = SaveSystem.get_var(
+		SavePaths.mouse_sensitivity,
+		mouse_sensitivity
+		)

@@ -20,12 +20,14 @@ func play_music(audio: AudioStream,
 
 	current_music.play()
 
-	if _cross_fade > 0 and old_music:
+	if _cross_fade > 0 and old_music and current_music:
+		if !is_instance_valid(old_music) and !is_instance_valid(current_music):
+			return
 		cross_fade(old_music, current_music)
 		
 	else:
 		current_music.play()
-		if old_music:
+		if old_music and is_instance_valid(old_music):
 			old_music.queue_free()
 		
 func play_ui(
@@ -41,7 +43,12 @@ func play_ui(
 	)
 
 	new_player.play()
-
+func stop_sound(bus: Buses=Buses.SFX):
+	for child in get_children():
+		if child.bus == bus:
+			child.stop()
+			return
+		
 func play_sound(
 	audio: AudioStream,
 	duration: float=0.0,
@@ -122,9 +129,11 @@ func _clear_bus(bus: Buses):
 		if child.bus == AudioServer.get_bus_name(bus):
 			child.queue_free()
 
-func cross_fade(from: CustomAudioStreamPlayer, to: CustomAudioStreamPlayer, time: float=2.0):
+func cross_fade(from: AudioStreamPlayer, to: AudioStreamPlayer, time: float=2.0):
+	if not is_instance_valid(from) and not is_instance_valid(to):
+		return
+	
 	var tween: Tween = create_tween()
-	print(from, to)
 
 	tween.parallel().tween_property(
 		from, "volume_db", -80, time

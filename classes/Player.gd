@@ -19,6 +19,7 @@ static var can_move: bool = true
 func _ready() -> void:
 	g.player = self
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	can_move = true
 
 func _input(event) -> void:
 	# if event.is_action_released("DEBUG_CLEAR"):

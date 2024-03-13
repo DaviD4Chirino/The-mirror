@@ -127,7 +127,7 @@ theme_override_constants/margin_right = 10
 [node name="VBoxContainer" type="VBoxContainer" parent="margin/VBoxContainer/TabContainer/Controls/VBoxContainer/ScrollContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" parent="margin/VBoxContainer/TabContainer/Controls/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("7_84234")]
+[node name="MouseSensitivity" parent="margin/VBoxContainer/TabContainer/Controls/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("7_84234")]
 layout_mode = 2
 
 [node name="inputs_config" parent="margin/VBoxContainer/TabContainer/Controls/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("1_ub6ae")]
@@ -138,7 +138,7 @@ layout_mode = 2
 tooltip_text = "Change the configuration options to the default"
 text = "Restore"
 script = ExtResource("3_aip03")
-restore_nodes = [NodePath("../ScrollContainer/MarginContainer/VBoxContainer/inputs_config")]
+restore_nodes = [NodePath("../ScrollContainer/MarginContainer/VBoxContainer/inputs_config"), NodePath("../ScrollContainer/MarginContainer/VBoxContainer/inputs_config")]
 
 [node name="AcceptButton" type="Button" parent="margin/VBoxContainer"]
 layout_mode = 2

@@ -8,7 +8,7 @@ extends Node3D
 
 @onready var text: MeshInstance3D = credits.get_node("Text")
 @onready var credits_size: Vector3 = text.get_aabb().size
-
+var changing_scene: bool = false
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	AudioManager.play_sound(
@@ -18,3 +18,7 @@ func _ready():
 
 func _physics_process(delta):
 	text.position.z -= delta * scroll_speed
+
+func _input(event):
+	if event.is_action_released("ACTION_PAUSE"):
+		Utility.quit_game()

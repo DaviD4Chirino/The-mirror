@@ -22,7 +22,7 @@ func _on_quit_button_pressed():
 			)
 
 func _return_to_main_menu() -> void:
-	print_debug("returning to main menu")
+	Level.resume()
 	SceneManager.change_scene(Scenes.main_menu)
 
 func _on_resume_pressed():
