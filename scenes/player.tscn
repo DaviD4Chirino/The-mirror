@@ -1,12 +1,15 @@
-[gd_scene load_steps=11 format=3 uid="uid://ddqxijk1lfhxc"]
+[gd_scene load_steps=20 format=3 uid="uid://ddqxijk1lfhxc"]
 
 [ext_resource type="Script" path="res://classes/Player.gd" id="1_dl41v"]
 [ext_resource type="Texture2D" uid="uid://bw3ud1m3hvqot" path="res://trenchbroom/textures/clip.png" id="2_jw1id"]
+[ext_resource type="AudioStream" uid="uid://cyx7ttjbk6l2d" path="res://assets/audio/sfx/footsteps/336598__inspectorj__footsteps-concrete-a_1.mp3" id="2_rs6bj"]
+[ext_resource type="AudioStream" uid="uid://dditskmn76ibx" path="res://assets/audio/sfx/footsteps/336598__inspectorj__footsteps-concrete-a_2.mp3" id="3_00opo"]
 [ext_resource type="Script" path="res://scenes/player_head.gd" id="3_yhurf"]
+[ext_resource type="AudioStream" uid="uid://b11rh2lrjpmlu" path="res://assets/audio/sfx/footsteps/336598__inspectorj__footsteps-concrete-a_3.mp3" id="4_ielqj"]
+[ext_resource type="AudioStream" uid="uid://cmb27s7r7fujj" path="res://assets/audio/sfx/footsteps/336598__inspectorj__footsteps-concrete-a_4.mp3" id="5_kkq5l"]
 [ext_resource type="Script" path="res://scenes/player_movement.gd" id="6_1wkxp"]
-[ext_resource type="PackedScene" uid="uid://ceitac4y6dw5" path="res://scenes/pickup_empty.tscn" id="6_ujk2a"]
-[ext_resource type="Resource" uid="uid://dl2p2nwmvh5hy" path="res://resources/items/key.tres" id="7_m83ma"]
 [ext_resource type="Environment" uid="uid://dlkwwtfm48bl6" path="res://resources/enviroment.tres" id="7_tt07g"]
+[ext_resource type="Script" path="res://classes/custom/CustomAudioStreamPlayer.gd" id="10_rocqt"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xbpib"]
 albedo_texture = ExtResource("2_jw1id")
@@ -15,12 +18,123 @@ albedo_texture = ExtResource("2_jw1id")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_su0fi"]
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("hand", "eyes", "head", "feet")]
+[sub_resource type="Animation" id="Animation_j4ed4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("hand:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.468, -0.3, -0.657)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("hand:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-4.43075e-08, 0.241815, -1.62848)]
+}
+
+[sub_resource type="Animation" id="Animation_1nm2c"]
+resource_name = "attack"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("hand:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.35, 0.55, 1),
+"transitions": PackedFloat32Array(0.217638, 1, 0.210225, 3.73213, 1),
+"update": 0,
+"values": [Vector3(0.468, -0.3, -0.657), Vector3(0.468, 0.0774442, -0.455288), Vector3(0.468, 0.077, -0.455), Vector3(0.184919, -0.132002, -0.655621), Vector3(0.468, -0.3, -0.657)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("hand:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.35, 0.55, 1),
+"transitions": PackedFloat32Array(0.217638, 1, 0.210225, 3.73213, 1),
+"update": 0,
+"values": [Vector3(-4.43075e-08, 0.241815, -1.62848), Vector3(0.998812, 0.458259, -1.23531), Vector3(0.998812, 0.458259, -1.23531), Vector3(-1.2163, 0.92415, -2.3578), Vector3(-4.43075e-08, 0.241815, -1.62848)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.45),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"check_for_destructible"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ppykp"]
+_data = {
+"RESET": SubResource("Animation_j4ed4"),
+"attack": SubResource("Animation_1nm2c")
+}
+
+[sub_resource type="Animation" id="Animation_534pi"]
+resource_name = "footstep"
+length = 0.6
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_footstep"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0yhqm"]
+_data = {
+"footstep": SubResource("Animation_534pi")
+}
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_6s2av"]
+streams_count = 4
+stream_0/stream = ExtResource("2_rs6bj")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("3_00opo")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("4_ielqj")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("5_kkq5l")
+stream_3/weight = 1.0
+
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("hand", "eyes", "head", "feet", "anim", "footsteps")]
 script = ExtResource("1_dl41v")
 hand = NodePath("head/hand")
 eyes = NodePath("head/eyes")
 head = NodePath("head")
 feet = NodePath("feet")
+anim = NodePath("head/AnimationPlayer")
+footsteps = NodePath("CustomAudioStreamPlayer")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 material_override = SubResource("StandardMaterial3D_xbpib")
@@ -30,32 +144,46 @@ mesh = SubResource("CapsuleMesh_cbgyd")
 shape = SubResource("CapsuleShape3D_su0fi")
 
 [node name="head" type="Node3D" parent="." node_paths=PackedStringArray("player", "camera")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 script = ExtResource("3_yhurf")
 player = NodePath("..")
 camera = NodePath("Camera3D")
 
 [node name="Camera3D" type="Camera3D" parent="head"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 environment = ExtResource("7_tt07g")
 current = true
 fov = 90.0
 
 [node name="eyes" type="RayCast3D" parent="head"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.091347, -0.57032)
 target_position = Vector3(0, 0, -2)
-collision_mask = 24576
+collision_mask = 28672
 collide_with_areas = true
 collide_with_bodies = false
 
 [node name="hand" type="Marker3D" parent="head"]
-transform = Transform3D(-0.0559738, 0.96929, 0.239466, -0.998337, -0.0576512, 0, 0.0138055, -0.239067, 0.970905, 0.468, 0.2, -0.657)
+transform = Transform3D(-0.0559743, 0.96929, 0.239465, -0.998337, -0.0576516, 4.43075e-08, 0.0138056, -0.239067, 0.970905, 0.468, -0.3, -0.657)
 
-[node name="PickupEmpty" parent="head/hand" instance=ExtResource("6_ujk2a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-item = ExtResource("7_m83ma")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="head"]
+libraries = {
+"": SubResource("AnimationLibrary_ppykp")
+}
 
-[node name="feet" type="Node3D" parent="." node_paths=PackedStringArray("player")]
+[node name="feet" type="Node3D" parent="." node_paths=PackedStringArray("player", "player_anim")]
 script = ExtResource("6_1wkxp")
 player = NodePath("..")
+player_anim = NodePath("../PlayerAnimations")
 speed = 3.5
 acceleration = 10.0
+
+[node name="PlayerAnimations" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0yhqm")
+}
+
+[node name="CustomAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_6s2av")
+volume_db = 5.0
+bus = &"Sfx"
+script = ExtResource("10_rocqt")
+free_on_finished = false

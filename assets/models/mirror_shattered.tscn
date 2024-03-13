@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ddtnfsahlygk3"]
+
+[ext_resource type="PackedScene" uid="uid://wukpmu1rayh1" path="res://assets/models/mirror_shattered.glb" id="1_bc1yr"]
+
+[node name="mirror_shattered" instance=ExtResource("1_bc1yr")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)

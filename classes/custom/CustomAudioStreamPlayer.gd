@@ -10,7 +10,7 @@ class_name CustomAudioStreamPlayer
 @export var fade_in: float = 0.0
 ## In seconds
 @export var fade_out: float = 0.0
-
+@export var free_on_finished: bool = true
 var cross_fading: bool = false
 
 func _init():
@@ -45,4 +45,6 @@ func _on_self_finished():
 		return
 	if fade_out:
 		await handle_fade_out()
-	queue_free()
+
+	if free_on_finished:
+		queue_free()

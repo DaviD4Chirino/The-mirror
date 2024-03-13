@@ -1,5 +1,5 @@
 extends Area3D
-
+var door_locked: AudioStream = preload ("res://assets/audio/sfx/321087__benjaminnelan__door-locked.wav")
 # Forgive me Qodot team for what i have done
 @export var properties: Dictionary:
 	get:
@@ -45,6 +45,7 @@ func handle_body_entered(body: Node):
 						1.5,
 						false
 					)
+					AudioManager.play_sound(door_locked)
 		else:
 			emit_signal("trigger")
 

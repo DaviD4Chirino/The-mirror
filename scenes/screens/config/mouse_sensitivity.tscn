@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://5y7ne61phtdc"]
+
+[ext_resource type="Script" path="res://scenes/screens/config/mouse_sensitivity.gd" id="1_32peq"]
+[ext_resource type="Script" path="res://classes/custom/CustomHSlider.gd" id="1_jw45k"]
+
+[node name="MouseSensitivity" type="HBoxContainer" node_paths=PackedStringArray("slider", "value_label")]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 16.0
+grow_horizontal = 2
+script = ExtResource("1_32peq")
+slider = NodePath("CustomHSlider")
+value_label = NodePath("Value")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "Mouse Sensitivity"
+
+[node name="CustomHSlider" type="HSlider" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 0.05
+step = 0.001
+value = 0.02
+script = ExtResource("1_jw45k")
+
+[node name="Value" type="Label" parent="."]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "1"
+
+[connection signal="value_changed" from="CustomHSlider" to="." method="_on_custom_h_slider_value_changed"]

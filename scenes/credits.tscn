@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpssroklvwrgn"]
+
+[ext_resource type="PackedScene" uid="uid://boifynmn5vb8a" path="res://assets/models/credits.glb" id="1_44gob"]
+
+[node name="credits" instance=ExtResource("1_44gob")]

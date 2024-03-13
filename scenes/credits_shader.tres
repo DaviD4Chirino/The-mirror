@@ -1,0 +1,6 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cma14p4h1cwtl"]
+
+[ext_resource type="Shader" path="res://scenes/credits.gdshader" id="1_7jdrh"]
+
+[resource]
+shader = ExtResource("1_7jdrh")

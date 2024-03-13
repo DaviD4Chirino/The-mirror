@@ -16,6 +16,7 @@ func play_music(audio: AudioStream,
 		delay, fade_in,
 		fade_out, Buses.MUSIC
 	)
+	current_music.process_mode = Node.PROCESS_MODE_ALWAYS
 
 	current_music.play()
 
@@ -26,6 +27,20 @@ func play_music(audio: AudioStream,
 		current_music.play()
 		if old_music:
 			old_music.queue_free()
+		
+func play_ui(
+	audio: AudioStream,
+	duration: float=0.0,
+	delay: float=0.0,
+	fade_in: float=0.0,
+	fade_out: float=0.0
+	):
+	var new_player: CustomAudioStreamPlayer = create_stream_player(
+		audio, duration, delay,
+		fade_in, fade_out, Buses.UI
+	)
+
+	new_player.play()
 
 func play_sound(
 	audio: AudioStream,

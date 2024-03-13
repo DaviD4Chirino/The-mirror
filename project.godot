@@ -42,7 +42,7 @@ project/assembly_name="Template 3D"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/awesome_input_icons/plugin.cfg", "res://addons/imrp/plugin.cfg", "res://addons/nv.file_system/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/qodot/plugin.cfg", "res://addons/save_system/plugin.cfg", "res://addons/scene_manager/plugin.cfg")
+enabled=PackedStringArray("res://addons/awesome_input_icons/plugin.cfg", "res://addons/destruction/plugin.cfg", "res://addons/imrp/plugin.cfg", "res://addons/nv.file_system/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/qodot/plugin.cfg", "res://addons/save_system/plugin.cfg", "res://addons/scene_manager/plugin.cfg")
 
 [file_customization]
 
@@ -185,12 +185,17 @@ MOVE_RIGHT={
 }
 ACTION_INTERACT={
 "deadzone": 0.5,
-"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(162, 19),"global_position":Vector2(165, 51),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":69,"physical_keycode":0,"key_label":0,"unicode":101,"echo":false,"script":null)
 ]
 }
 DEBUG_CLEAR={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194306,"key_label":0,"unicode":0,"echo":false,"script":null)
+]
+}
+ACTION_ATTACK={
+"deadzone": 0.5,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(117, 4),"global_position":Vector2(120, 36),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
 ]
 }
 
@@ -199,6 +204,7 @@ DEBUG_CLEAR={
 3d_render/layer_1="default"
 3d_render/layer_2="weapon"
 3d_physics/layer_1="player"
+3d_physics/layer_13="destructable"
 3d_physics/layer_14="interactable"
 3d_physics/layer_15="pickups"
 3d_physics/layer_16="world"

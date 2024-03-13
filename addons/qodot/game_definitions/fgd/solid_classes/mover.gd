@@ -1,4 +1,7 @@
 extends CharacterBody3D
+var door_open: AudioStream = preload ("res://assets/audio/sfx/15419__pagancow__dorm-door-opening.mp3")
+
+var already_open: bool = false
 
 @export var properties: Dictionary:
 	get:
@@ -50,10 +53,14 @@ func use() -> void:
 
 func play_motion() -> void:
 	target_transform = base_transform * offset_transform
+	if not already_open:
+		AudioManager.play_sound(door_open)
+	already_open = true
 	disable_collisions()
 	
 func reverse_motion() -> void:
 	target_transform = base_transform
+	already_open = false
 	enable_collisions()
 
 func disable_collisions() -> void:

@@ -19,3 +19,5 @@ static var video_settings: String = "video_settings"
 
 ## Bool
 static var enable_shadows: String = "enable_shadows"
+## float
+static var mouse_sensitivity: String = "mouse_sensitivity"

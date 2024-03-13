@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://btbv6e4wwp4px"]
+[gd_scene load_steps=6 format=3 uid="uid://btbv6e4wwp4px"]
 
 [ext_resource type="Script" path="res://classes/custom/CustomButton.gd" id="1_6qigx"]
 [ext_resource type="Script" path="res://scenes/screens/main_menu.gd" id="1_w83ax"]
+[ext_resource type="Texture2D" uid="uid://crt20424medbr" path="res://assets/media/images/main menu.png" id="2_ftpt7"]
+[ext_resource type="AudioStream" uid="uid://b642fymhf2cw7" path="res://assets/audio/music/Buzzsaw.mp3" id="2_u17ho"]
 [ext_resource type="PackedScene" uid="uid://biat56s5n0eww" path="res://scenes/screens/config/configuration_screen.tscn" id="3_cosxt"]
 
 [node name="MainMenu" type="Control" node_paths=PackedStringArray("configuration_screen")]
@@ -14,6 +16,17 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_w83ax")
 configuration_screen = NodePath("ConfigurationScreen")
+menu_music = ExtResource("2_u17ho")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ftpt7")
+expand_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1

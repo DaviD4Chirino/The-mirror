@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://dt3ub0erui033"]
+
+[ext_resource type="PackedScene" uid="uid://0q8m3rba3w6g" path="res://assets/models/beach.glb" id="1_mn071"]
+[ext_resource type="Material" uid="uid://cixanqguv4wbc" path="res://resources/shaders/water.tres" id="2_3750r"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_defaj"]
+material = ExtResource("2_3750r")
+size = Vector2(55, 43)
+
+[node name="beach2" instance=ExtResource("1_mn071")]
+
+[node name="sea" parent="beach" index="0"]
+transform = Transform3D(-1, 8.74228e-08, 0, 8.74228e-08, 1, 8.74228e-08, 7.64274e-15, 8.74228e-08, -1, 0, -0.354704, -33)
+mesh = SubResource("PlaneMesh_defaj")

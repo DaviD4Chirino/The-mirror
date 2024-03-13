@@ -18,6 +18,8 @@ signal dialog_started
 
 signal settings_changed
 
+signal mirror_destroyed(count: int)
+
 ##use this to check if the signal was emitted
 func test_signal():
 	print("test signal")

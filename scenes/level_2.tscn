@@ -1,8 +1,9 @@
-[gd_scene load_steps=117 format=3 uid="uid://cen0bg7skewad"]
+[gd_scene load_steps=120 format=3 uid="uid://cen0bg7skewad"]
 
 [ext_resource type="Script" path="res://scenes/house.gd" id="1_lnrm0"]
 [ext_resource type="Script" path="res://scenes/level_2.gd" id="1_rp7ax"]
 [ext_resource type="PackedScene" uid="uid://ds4whqb8apmwn" path="res://scenes/screens/pause_menu.tscn" id="2_4xlv0"]
+[ext_resource type="AudioStream" uid="uid://0qma6xssjn33" path="res://assets/audio/music/fear-dread-pitt-main-version-29655-03-08_reduced.mp3" id="2_8a28g"]
 [ext_resource type="PackedScene" uid="uid://ddqxijk1lfhxc" path="res://scenes/player.tscn" id="3_2whkl"]
 [ext_resource type="PackedScene" uid="uid://ornxq2s2xi5w" path="res://assets/models/lightbulb.tscn" id="4_8gu6l"]
 [ext_resource type="PackedScene" uid="uid://dijaiyh4a1dp1" path="res://assets/models/bed_frame.glb" id="5_xy6kr"]
@@ -31,6 +32,8 @@
 [ext_resource type="Resource" uid="uid://b0mrcrgmpwhqw" path="res://resources/dialogs/mirror1.tres" id="29_xsh66"]
 [ext_resource type="Script" path="res://resources/DialogTreeData.gd" id="30_b4uha"]
 [ext_resource type="Script" path="res://resources/DialogData.gd" id="31_mcbv4"]
+[ext_resource type="PackedScene" uid="uid://bcnv1m1vpq0r5" path="res://scenes/conection_room.tscn" id="32_rumjb"]
+[ext_resource type="PackedScene" uid="uid://dektr31bfr8wl" path="res://scenes/teleport_scene_trigger.tscn" id="33_2h8hb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m1hy1"]
 
@@ -556,21 +559,18 @@ tree = Array[ExtResource("31_mcbv4")]([SubResource("Resource_h71fq")])
 
 [node name="Level2" type="Node3D" node_paths=PackedStringArray("key_spawns_holder", "pause_menu")]
 script = ExtResource("1_rp7ax")
+music = ExtResource("2_8a28g")
 key_spawns_holder = NodePath("KeySpawnPositions")
 pause_menu = NodePath("pause_menu")
 
-[node name="pause_menu" parent="." node_paths=PackedStringArray("options_screen") instance=ExtResource("2_4xlv0")]
+[node name="pause_menu" parent="." instance=ExtResource("2_4xlv0")]
 visible = false
-options_screen = NodePath(".")
 
 [node name="house" type="Node3D" parent="."]
 script = ExtResource("1_lnrm0")
 
-[node name="pause_menu" parent="house" instance=ExtResource("2_4xlv0")]
-visible = false
-
 [node name="Player" parent="house" instance=ExtResource("3_2whkl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.94608, 1.11338, 14.0535)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.33182, 0.880679, 15.6625)
 
 [node name="props" type="Node3D" parent="house"]
 
@@ -1079,6 +1079,21 @@ transform = Transform3D(0.999848, 0, 0.0174524, 0, 1, 0, -0.0174524, 0, 0.999848
 
 [node name="SpawnPos6" type="Marker3D" parent="KeySpawnPositions"]
 transform = Transform3D(0.492424, 0, 0.870356, 0, 1, 0, -0.870356, 0, 0.492424, 13.069, -0.024, 12.136)
+
+[node name="ConectionRoom" parent="." instance=ExtResource("32_rumjb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.7839, -0.503435, -0.306)
+
+[node name="davids props" type="Node3D" parent="ConectionRoom"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.66924, 1.718, 8.05307)
+
+[node name="bed_frame" parent="ConectionRoom/davids props" instance=ExtResource("5_xy6kr")]
+
+[node name="CharacterMirror3" parent="." instance=ExtResource("29_n50yj")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 27.89, -0.0034349, 1.86159)
+
+[node name="TeleportSceneTrigger" parent="." instance=ExtResource("33_2h8hb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.7167, 0.532698, 2.27693)
+change_scene_to = "res://scenes/levels/level_3.tscn"
 
 [connection signal="trigger" from="house/QodotMap/entity_1_trigger" to="house/QodotMap/entity_3_mover" method="use"]
 [connection signal="trigger" from="house/QodotMap/entity_4_trigger" to="house/QodotMap/entity_5_mover" method="use"]

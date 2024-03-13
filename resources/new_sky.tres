@@ -1,9 +1,10 @@
 [gd_resource type="Sky" load_steps=3 format=3 uid="uid://dvdjgka375orq"]
 
-[ext_resource type="Texture2D" uid="uid://bbuimf0txsshb" path="res://trenchbroom/textures/checker_white_512x512.png" id="1_axwqm"]
+[ext_resource type="Texture2D" uid="uid://dohuc7lcdboiv" path="res://resources/hdri/kloofendal_43d_clear_puresky_1k.exr" id="1_xsgin"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_adm5m"]
-panorama = ExtResource("1_axwqm")
+panorama = ExtResource("1_xsgin")
+filter = false
 
 [resource]
 sky_material = SubResource("PanoramaSkyMaterial_adm5m")

@@ -5,9 +5,12 @@
 [resource]
 background_mode = 2
 sky = ExtResource("1_hilyr")
-ambient_light_source = 2
-ambient_light_color = Color(0.662745, 0.662745, 0.662745, 1)
+sky_rotation = Vector3(0, 3.14159, 0)
+ambient_light_color = Color(0.670588, 0.670588, 0.670588, 1)
+ambient_light_sky_contribution = 0.0
+reflected_light_source = 2
 tonemap_mode = 3
+tonemap_exposure = 1.5
 fog_light_color = Color(0, 0, 0, 1)
 fog_density = 0.4
 fog_sky_affect = 0.0

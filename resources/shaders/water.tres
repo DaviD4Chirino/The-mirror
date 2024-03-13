@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cixanqguv4wbc"]
+
+[ext_resource type="Shader" path="res://assets/models/beach.gdshader" id="1_ecqki"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_ecqki")
+shader_parameter/WATER_COL = Color(0.04, 0.38, 0.88, 1)
+shader_parameter/WATER2_COL = Color(0.04, 0.35, 0.78, 1)
+shader_parameter/FOAM_COL = Color(0.8125, 0.9609, 0.9648, 1)
+shader_parameter/distortion_speed = 3.0
+shader_parameter/tile = Vector2(10, 10)
+shader_parameter/wave_speed = 1.5

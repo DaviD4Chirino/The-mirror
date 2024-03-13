@@ -5,5 +5,5 @@
 
 [resource]
 script = ExtResource("2_7yknk")
-name = "Maze"
+name = "maze"
 model = ExtResource("1_1bajr")

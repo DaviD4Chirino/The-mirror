@@ -129,7 +129,8 @@ func _replace_scene(path: String, options: Dictionary) -> void:
 	var following_scene: PackedScene = ResourceLoader.load(path, "PackedScene", 0)
 	_current_scene = following_scene.instantiate()
 	_current_scene.tree_entered.connect(options["on_tree_enter"].bind(_current_scene))
-	_current_scene.ready.connect(options["on_ready"].bind(_current_scene))
+	# if _current_scene.has_method(options["on_ready"]):
+	# 	_current_scene.ready.connect(options["on_ready"].bind(_current_scene))
 	await _tree.create_timer(0.0).timeout
 	_root.add_child(_current_scene)
 	_tree.set_current_scene(_current_scene)

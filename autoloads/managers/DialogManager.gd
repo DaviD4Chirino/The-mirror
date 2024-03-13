@@ -64,6 +64,8 @@ func initialize_dialog(tree: DialogTreeData, node: Node, unique=false):
 	dialog_popup.show_dialog()
 
 	await SignalBus.dialog_finished
+	await dialog_popup.anim.animation_finished
+
 	in_dialog = false
 	Level.resume()
 

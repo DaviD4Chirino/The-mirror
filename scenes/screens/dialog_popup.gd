@@ -1,6 +1,7 @@
 extends Control
 
 @export var dialog_tree: DialogTreeData
+
 @export_category("Nodes")
 @export var character_label: Label
 @export var dialog_label: Label
@@ -40,6 +41,7 @@ func hide_dialog():
 func show_continue_button():
 	input_icon_rect.show()
 	anim.play("show_continue")
+	await anim.animation_finished
 
 func hide_continue_button():
 	anim.play_backwards("show_continue")
@@ -67,12 +69,10 @@ func update_text():
 
 	dialog_label.text = current_dialog.dialog
 
-	pass
-
 func finish_dialog():
 	SignalBus.dialog_finished.emit()
 	await hide_dialog()
 
 func _on_continue_timer_timeout():
 	continue_button_visible = true
-	show_continue_button()
+	await show_continue_button()

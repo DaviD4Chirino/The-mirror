@@ -1,7 +1,7 @@
 extends Node3D
 
 @export var player: Player
-
+@export var player_anim: AnimationPlayer
 @export_category("Configuration")
 @export var speed: float = 5
 @export var acceleration: float = 15
@@ -16,6 +16,7 @@ func _physics_process(delta):
 	movement(delta)
 	
 func movement(delta: float):
+	play_footstep_sound()
 	var input_dir: Vector2 = Input.get_vector("MOVE_LEFT", "MOVE_RIGHT", "MOVE_FORWARD", "MOVE_BACKWARD")
 	var movement_dir: Vector3 = player.transform.basis * Vector3(input_dir.x, 0, input_dir.y)
 
@@ -26,3 +27,10 @@ func movement(delta: float):
 	player.velocity.z = lerpf(player.velocity.z, target_velocity.z, acceleration * delta)
 
 	player.move_and_slide()
+
+func play_footstep_sound():
+	if target_velocity.z == 0: return
+	if target_velocity.x == 0: return
+	if player_anim.is_playing(): return
+		
+	player_anim.play("footstep")

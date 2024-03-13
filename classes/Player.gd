@@ -7,7 +7,12 @@ class_name Player
 @export var eyes: RayCast3D
 @export var head: Node3D
 @export var feet: Node3D
+
+@export_group("Inner nodes")
+@export var anim: AnimationPlayer
 static var item: Item
+@export_group("sounds")
+@export var footsteps: CustomAudioStreamPlayer
 
 static var can_move: bool = true
 
@@ -16,11 +21,24 @@ func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _input(event) -> void:
-	if event.is_action_released("DEBUG_CLEAR"):
-		clear_pickups()
+	# if event.is_action_released("DEBUG_CLEAR"):
+	# 	clear_pickups()
+	if event.is_action_released("ACTION_ATTACK"):
+		if item and item.name == "maze":
+			anim.play("attack")
 
 func _physics_process(_delta):
 	handle_pickup()
+
+## THis method is to be called by the animation player mid animation
+func check_for_destructible():
+	if !eyes.is_colliding(): return
+
+	var destructible: Object = eyes.get_collider()
+	# print(destructible.owner)
+
+	if destructible.owner.has_method("destroy"):
+		destructible.owner.destroy()
 
 ## if the player is seeing an item, it returns the item or null
 func handle_pickup() -> void:
@@ -49,3 +67,10 @@ func clear_pickups() -> void:
 		for child in hand.get_children():
 			child.queue_free()
 		item = null
+
+func play_footstep():
+	if not footsteps:
+		printerr("NO FOOTSTEPS SOUND ")
+		return
+
+	footsteps.play()

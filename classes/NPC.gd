@@ -15,6 +15,7 @@ func _ready():
 ## This will be fired each physics frame
 func interact():
 	if not interactive: return
+	if not dialog_tree or not idle_dialog: return
 	# Display message
 	DialogManager.send_message(
 			self,

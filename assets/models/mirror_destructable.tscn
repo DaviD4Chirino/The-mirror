@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://cv8vb5u7iy6ro"]
+
+[ext_resource type="PackedScene" uid="uid://cys1ix6w68m2r" path="res://assets/models/mirror.glb" id="1_qg3b2"]
+[ext_resource type="Script" path="res://assets/models/mirror_destructable.gd" id="2_o7up2"]
+[ext_resource type="AudioStream" uid="uid://dnm0cnrbdqpyd" path="res://assets/audio/sfx/glass-smash-6266.mp3" id="3_73u8a"]
+[ext_resource type="Script" path="res://addons/destruction/destruction.gd" id="5_82ktc"]
+[ext_resource type="PackedScene" uid="uid://ddtnfsahlygk3" path="res://assets/models/mirror_shattered.tscn" id="6_3t1gn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6cwlm"]
+size = Vector3(1, 3.50732, 2.79675)
+
+[node name="mirror" groups=["mirror"] instance=ExtResource("1_qg3b2")]
+script = ExtResource("2_o7up2")
+destruction_sound = ExtResource("3_73u8a")
+
+[node name="destructable" type="Node" parent="." index="0" node_paths=PackedStringArray("shard_container")]
+script = ExtResource("5_82ktc")
+fragmented = ExtResource("6_3t1gn")
+shard_container = NodePath("")
+animation_length = 1.0
+collision_layer = 0
+collision_mask = 32768
+
+[node name="Area3D" type="Area3D" parent="." index="3"]
+collision_layer = 12288
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25366, 0.00579834)
+shape = SubResource("BoxShape3D_6cwlm")
